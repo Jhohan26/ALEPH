@@ -11,6 +11,7 @@
 	--azul: #34037b;
 	--blanco: #ffffff;
 	--gris: #d8d8d8;
+	--x: 45deg;
 }
 *{
 	padding: 0;
@@ -72,6 +73,9 @@ header{
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border: none;
+}
+.search:hover{
 }
 .search i{
 	color: var(--gris);
@@ -112,12 +116,50 @@ h1{
 	font-size: 1.8vw;
 	font-weight: bolder;
 }
-.explorar{
-	width: 10vw;
-	height: 2.8vw;
-	background: none;
-	border: 0.2vw solid var(--blanco);
-	border-radius: 1vw;
+.boton_pa_juan{
 	margin: 2vw 0;
-	font-size: 1.8vw;
+	position: relative;
+	width: 10vw;
+	height: 3vw;
+	display: inline-block;
+	border-radius: 0.2vw;
+}
+.boton_pa_juan i{
+	position: absolute;
+	inset: -0.2vw;
+	display: block;
+	border-radius: 0.2vw;
+}
+.boton_pa_juan i, .boton_pa_juan i:nth-child(2){
+	background: linear-gradient(var(--x),
+		var(--blanco), var(--morado),
+		var(--morado),var(--blanco));
+}
+.boton_pa_juan i:nth-child(2){
+	filter: blur(0.4vw);
+}
+.boton_pa_juan span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background: var(--morado);
+	overflow: hidden;
+	border-radius: 0.2vw;
+}
+.boton_pa_juan span::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -50%;
+	width: 100%;
+	height: 100%;
+	background: var(--blanco);
+	transform: skew(25deg);
+	opacity: 0.05;
 }

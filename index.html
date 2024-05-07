@@ -15,7 +15,7 @@
 		</div>
 		<div class="busqueda">
 			<input type="text" name="busqueda" placeholder="¿Que deseas aprender?">
-			<div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
+			<button class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
 		</div>
 		<nav>
 			<ul>
@@ -30,12 +30,24 @@
 			<div class="izquierda">
 				<h1>APRENDE, DESCUBRE Y SUPERATE</h1>
 				<h4>La nueva plataforma de aprendizaje digital</h4>
-				<button class="explorar">Explorar</button>
+				<a href="" class="boton_pa_juan">
+					<i></i>
+					<i></i>
+					<span>Explorar</span>
+				</a>
 			</div>
 			<div class="derecha">
 				<img src="./images/persona.svg">
 			</div>
 		</div>
 	</main>
+	<script type="text/javascript">
+		let btn = document.getElementsByClassName("boton_pa_juan")[0];
+		btn.addEventListener("mousemove", e => {
+			let rect = e.target.getBoundingClientRect();
+			let x = e.clientX * 3 - rect.left;
+			btn.style.setProperty("--x", x + "deg");
+		});
+	</script>
 </body>
 </html>
