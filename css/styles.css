@@ -1,0 +1,123 @@
+@font-face{
+	font-family: "Inter";
+	src: url("../fonts/inter.ttf");
+}
+@font-face{
+	font-family: "Nebulax";
+	src: url("../fonts/nebulax.ttf");
+}
+:root{
+	--morado: #770080;
+	--azul: #34037b;
+	--blanco: #ffffff;
+	--gris: #d8d8d8;
+}
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	color: var(--blanco);
+	font-size: 1.4vw;
+	font-family: "Inter";
+}
+body{
+	background: linear-gradient(to right ,var(--morado), var(--azul));
+}
+header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	display: flex;
+	height: 6vw;
+	align-items: center;
+	padding: 1vw 3vw;
+	justify-content: space-between;
+}
+.logo{
+	height: 4vw;
+	display: flex;
+	align-items: center;
+}
+.logo img{
+	height: 100%;
+}
+.texto_logo{
+	padding-top: 0.6vw;
+	font-family: "Nebulax";
+	font-size: 2.4vw;
+	font-weight: normal;
+}
+.busqueda{
+	display: flex;
+	align-items: center;
+	background: var(--gris);
+	border: none;
+	height: 3vw;
+	width: 30vw;
+	border-radius: 1.5vw;
+}
+.busqueda input{
+	background: none;
+	padding: 1vw;
+	border: none;
+	outline: none;
+	width: 90%;
+	font-weight: 500;
+}
+.search{
+	background: linear-gradient(to right ,var(--morado), var(--azul));
+	width: 2.4vw;
+	height: 2.4vw;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.search i{
+	color: var(--gris);
+}
+ul{
+	display: flex;
+	list-style: none;
+	gap: 5vw;
+}
+li a{
+	font-size: 1.2vw;
+	text-decoration: none;
+	font-family: "Nebulax";
+}
+.landing{
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	padding: 8vw;
+	padding-top: 16vw;
+}
+.landing .izquierda{
+	flex: 5;
+}
+.landing .derecha{
+	flex: 4;
+}
+.landing div img{
+	width: 100%;
+}
+h1{
+	font-family: "Nebulax";
+	font-weight: normal;
+	font-size: 5vw;
+	line-height: 5vw;
+}
+.izquierda h4{
+	font-size: 1.8vw;
+	font-weight: bolder;
+}
+.explorar{
+	width: 10vw;
+	height: 2.8vw;
+	background: none;
+	border: 0.2vw solid var(--blanco);
+	border-radius: 1vw;
+	margin: 2vw 0;
+	font-size: 1.8vw;
+}
