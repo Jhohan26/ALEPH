@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/styles.css">
-	<title>ALEPH | cursos</title>
-	<script src="https://kit.fontawesome.com/b48cdd04ea.js" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="../js/ajax.js" defer></script>
+	<?php require_once("../inc/head.php"); ?>
 </head>
 <body>
 	<header>
@@ -21,7 +16,7 @@
 		<nav>
 			<ul>
 				<li><a href="">SOBRE ALEPH</a></li>
-				<li><a href="">INICIAR SESION</a></li>
+				<li><a href="./inicio.php">INICIAR SESION</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -65,45 +60,11 @@
 				</form>
 			</div>
 			<div class="derecha">
-				<img src="../images/registro.svg">
+				<img src="../images/registro.png">
 			</div>
 		</div>
 		<div class="respuesta">
 		</div>
 	</main>
-	<script type="text/javascript">
-		let datos = document.querySelectorAll(".dato");
-
-		for (let dato of datos){
-			dato.addEventListener("input", function() {
-				if (this.value == ""){
-					this.classList.remove("lleno");
-				}
-				else{
-					this.classList.add("lleno");
-				}
-			});
-		}
-
-		let ojo = document.getElementById("ojo");
-		let contra = document.getElementById("contra");
-
-		ojo.addEventListener("click", function() {
-			if (contra.getAttribute("type") == "text"){
-				contra.setAttribute("type", "password");
-				this.classList.add("fa-eye");
-				this.classList.remove("fa-eye-slash");
-			}
-			else{
-				contra.setAttribute("type", "text");
-				this.classList.add("fa-eye-slash");
-				this.classList.remove("fa-eye");
-			}
-		});
-		function cerrar(){
-			let modal = document.getElementById("dialogo");
-			modal.style.display = "none";
-		}
-	</script>
 </body>
 </html>

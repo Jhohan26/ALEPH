@@ -20,7 +20,7 @@
 		<nav>
 			<ul>
 				<li><a href="">SOBRE ALEPH</a></li>
-				<li><a href="">INICIAR SESION</a></li>
+				<li><a href="./views/inicio.php">INICIAR SESION</a></li>
 				<li><a href="./views/registro.php">REGISTRARSE</a></li>
 			</ul>
 		</nav>
@@ -37,7 +37,7 @@
 				</a>
 			</div>
 			<div class="derecha">
-				<img src="./images/persona.svg">
+				<img src="./images/persona.png">
 			</div>
 		</section>
 	</main>
@@ -45,7 +45,7 @@
 		let btn = document.getElementsByClassName("boton_pa_juan")[0];
 		btn.addEventListener("mousemove", e => {
 			let rect = e.target.getBoundingClientRect();
-			let x = e.clientX * 3 - rect.left;
+			let x = e.clientX * 2 - rect.left;
 			btn.style.setProperty("--x", x + "deg");
 		});
 	</script>

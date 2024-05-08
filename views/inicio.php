@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require_once("../inc/head.php"); ?>
+</head>
+<body>
+	<header>
+		<a class="logo" href="../index.html">
+			<img src="../logos/blanco.svg">
+			<h2 class="texto_logo">ALEPH</h2>
+		<a>
+		<form class="busqueda" method="GET">
+			<input type="text" name="busqueda" placeholder="¿Que deseas aprender?" autocomplete="off">
+			<button class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+		</form>
+		<nav>
+			<ul>
+				<li><a href="">SOBRE ALEPH</a></li>
+				<li><a href="./registro.php">REGISTRARSE</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div class="landing">
+			<div class="izquierda">
+				<h1>BIENVENIDO/A DE NUEVO</h1>
+				<form class="registro formulario" method="POST" action="../php/registrar.php">
+					<div class="grupo doble">
+						<input type="text" name="usuario" class="dato mover_dato" required autocomplete="off" pattern="[a-zA-Z0-9]{4,20}" maxlength="20", min="4">
+						<label class="placeholder mover">Correo Electrónico o Nombre de Usuario</label>
+						<i class="fa-solid fa-envelope iconos"></i>
+					</div>
+					<div class="grupo doble">
+						<input type="password" id="contra" name="contrasena" class="dato mover_dato" required autocomplete="off" pattern="[a-zA-Z0-9$@.-]{8,24}" maxlength="20", min="8">
+						<label class="placeholder mover">Contraseña</label>
+						<i class="fa-regular fa-eye" id="ojo"></i>
+						<i class="fa-solid fa-lock iconos"></i>
+					</div>
+					<p style="opacity: 0;">Entre 8 y 24 caracteres</p>
+					<input type="submit" name="" value="Ingresar">
+				</form>
+			</div>
+			<div class="derecha">
+				<img src="../images/inicio.png">
+			</div>
+		</div>
+		<div class="respuesta">
+		</div>
+	</main>
+</body>
+</html>
