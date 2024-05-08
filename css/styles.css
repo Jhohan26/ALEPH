@@ -11,6 +11,8 @@
 	--azul: #34037b;
 	--blanco: #ffffff;
 	--gris: #d8d8d8;
+	--gris-oscuro: #7f7f7f;
+	--rojo: #ff667e;
 	--x: 45deg;
 }
 *{
@@ -38,6 +40,7 @@ header{
 	height: 4vw;
 	display: flex;
 	align-items: center;
+	text-decoration: none;
 }
 .logo img{
 	height: 100%;
@@ -56,14 +59,19 @@ header{
 	height: 3vw;
 	width: 30vw;
 	border-radius: 1.5vw;
+	transition: 150ms ease-in-out;
+}
+.busqueda:hover{
+	background: var(--blanco);
 }
 .busqueda input{
 	background: none;
-	padding: 1vw;
+	padding: 1vw 1.4VW;
 	border: none;
 	outline: none;
 	width: 90%;
 	font-weight: 500;
+	color: var(--gris-oscuro);
 }
 .search{
 	background: linear-gradient(to right ,var(--morado), var(--azul));
@@ -74,6 +82,7 @@ header{
 	align-items: center;
 	justify-content: center;
 	border: none;
+	cursor: pointer;
 }
 .search:hover{
 }
@@ -89,6 +98,13 @@ li a{
 	font-size: 1.2vw;
 	text-decoration: none;
 	font-family: "Nebulax";
+	transition: 200ms ease-in-out;
+	color: var(--gris);
+	opacity: 0.7;
+}
+li a:hover{
+	color: var(--blanco);
+	opacity: 1;
 }
 .landing{
 	display: flex;
@@ -162,4 +178,78 @@ h1{
 	background: var(--blanco);
 	transform: skew(25deg);
 	opacity: 0.05;
+}
+.registro{
+	padding-right: 2vw;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 5vw 1.2vw;
+	margin-top: 2vw;
+}
+.grupo{
+	position: relative;
+}
+.dato{
+	position: absolute;
+	width: 100%;
+	outline: none;
+	padding: 0.8vw 0.8vw;
+	background: none;
+	border-radius: 0.6vw;
+	border: 0.1vw solid var(--blanco);
+	transition: 100ms ease-in-out;
+	font-size: 1.2vw;
+}
+.dato:focus{
+	filter: drop-shadow(0 0 0.4vw var(--blanco));
+}
+.placeholder{
+	transform: translateY(0.6vw);
+	position: absolute;
+	padding: 0 0.2vw;
+	margin: 0 1.8vw;
+	backdrop-filter: blur(0.3vw);
+	transition: 200ms ease-in-out;
+	pointer-events: none;
+	color: var(--gris);
+}
+.dato:focus + .placeholder, .lleno + .placeholder{
+	transform: translateY(-0.9vw);
+}
+.doble{
+	grid-column: 1/3;
+}
+.registro p{
+	color: var(--gris);
+	margin: -1.8vw 0;
+	opacity: 0.6;
+}
+input[type="submit"]{
+	background: none;
+	outline: none;
+	border: 0.2vw solid var(--blanco);
+	grid-column: 1/2;
+	margin: -4vw 0;
+	height: 3.8vw;
+	font-size: 1.6vw;
+	width: 48%;
+	border-radius: 1vw;
+	transition: 100ms ease-in-out;
+	font-weight: 500;
+}
+input[type="submit"]:hover{
+	background: var(--blanco);
+	color: var(--morado);
+}
+.fa-eye{
+	padding: 0.2vw;
+	display: block;
+	position: absolute;
+	right: 1vw;
+	top: 0.75vw;
+	z-index: 10;
+	cursor: pointer;
+}
+.placeholder span{
+	color: var(--rojo);
 }
