@@ -2,11 +2,11 @@
 
 require_once("./main.php");
 
-$primer_nombre = $_POST["primer_nombre"];
-$segundo_nombre = $_POST["segundo_nombre"];
-$primer_apellido = $_POST["primer_apellido"];
-$segundo_apellido = $_POST["segundo_apellido"];
-$correo = $_POST["correo"];
+$primer_nombre = ucfirst($_POST["primer_nombre"]);
+$segundo_nombre = ucfirst($_POST["segundo_nombre"]);
+$primer_apellido = ucfirst($_POST["primer_apellido"]);
+$segundo_apellido = ucfirst($_POST["segundo_apellido"]);
+$correo = strtolower($_POST["correo"]);
 $usuario = $_POST["usuario"];
 $contrasena = $_POST["contrasena"];
 

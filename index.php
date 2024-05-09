@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header>
-		<a class="logo" href="./index.html">
+		<a class="logo" href="./index.php">
 			<img src="./logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
 		<a>
@@ -27,7 +27,7 @@
 				?>
 					<li><a href="">SOBRE ALEPH</a></li>
 					<li><a href="./views/inicio.php">MIS CURSOS</a></li>
-					<li><a href="./views/registro.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
+					<li><a href="./views/cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
 
 				<?php }else{ ?>
 

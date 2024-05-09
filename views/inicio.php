@@ -1,15 +1,6 @@
 <?php
 
-session_start(); 
-
-if (isset($_SESSION["id"])){
-	if (headers_sent()){
-		echo ("<script>window.location.href='../index.php'</script>");
-	}
-	else{
-		header("Location: ../index.php");
-	}
-}
+session_start();
 
 ?>
 
@@ -20,7 +11,7 @@ if (isset($_SESSION["id"])){
 </head>
 <body>
 	<header>
-		<a class="logo" href="../index.html">
+		<a class="logo" href="../index.php">
 			<img src="../logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
 		<a>
@@ -38,7 +29,7 @@ if (isset($_SESSION["id"])){
 				<h1>BIENVENIDO/A DE NUEVO</h1>
 				<form class="registro" action="" method="POST">
 					<div class="grupo doble">
-						<input type="text" name="login_usuario" class="dato mover_dato" required autocomplete="off" pattern="[a-zA-Z0-9]{4,20}" maxlength="20" minlength="4">
+						<input type="text" name="login_usuario" class="dato mover_dato" required autocomplete="off" maxlength="20" minlength="4">
 						<label class="placeholder mover">Correo Electrónico o Nombre de Usuario</label>
 						<i class="fa-solid fa-envelope iconos"></i>
 					</div>
@@ -50,21 +41,21 @@ if (isset($_SESSION["id"])){
 					</div>
 					<p style="opacity: 0;">Entre 8 y 24 caracteres</p>
 					<input type="submit" name="" value="Ingresar">
-					<?php
-
-					if (isset($_POST["login_usuario"]) && isset($_POST["login_contrasena"])){
-						require_once("../php/main.php");
-						require_once("../php/iniciar_sesion.php");
-					}
-
-					?>
 				</form>
 			</div>
 			<div class="derecha">
 				<img src="../images/inicio.png">
 			</div>
-		</div>
-		<div class="respuesta">
+			<div class="respuesta">
+				<?php
+
+				if (isset($_POST["login_usuario"]) && isset($_POST["login_contrasena"])){
+					require_once("../php/main.php");
+					require_once("../php/iniciar_sesion.php");
+				}
+
+				?>
+			</div>
 		</div>
 	</main>
 </body>

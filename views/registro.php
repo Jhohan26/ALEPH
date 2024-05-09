@@ -20,7 +20,7 @@ if (isset($_SESSION["id"])){
 </head>
 <body>
 	<header>
-		<a class="logo" href="../index.html">
+		<a class="logo" href="../index.php">
 			<img src="../logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
 		<a>
