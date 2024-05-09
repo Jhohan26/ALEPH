@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +21,22 @@
 		</form>
 		<nav>
 			<ul>
-				<li><a href="">SOBRE ALEPH</a></li>
-				<li><a href="./views/inicio.php">INICIAR SESION</a></li>
-				<li><a href="./views/registro.php">REGISTRARSE</a></li>
+				<?php 
+
+				if (isset($_SESSION["id"])){
+				?>
+					<li><a href="">SOBRE ALEPH</a></li>
+					<li><a href="./views/inicio.php">MIS CURSOS</a></li>
+					<li><a href="./views/registro.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
+
+				<?php }else{ ?>
+
+					<li><a href="">SOBRE ALEPH</a></li>
+					<li><a href="./views/inicio.php">INICIAR SESION</a></li>
+					<li><a href="./views/registro.php">REGISTRARSE</a></li>
+
+				<?php } ?>
+
 			</ul>
 		</nav>
 	</header>

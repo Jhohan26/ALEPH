@@ -1,3 +1,18 @@
+<?php
+
+session_start(); 
+
+if (isset($_SESSION["id"])){
+	if (headers_sent()){
+		echo ("<script>window.location.href='../index.php'</script>");
+	}
+	else{
+		header("Location: ../index.php");
+	}
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +24,7 @@
 			<img src="../logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
 		<a>
-		<form class="busqueda" method="GET">
-			<input type="text" name="busqueda" placeholder="¿Que deseas aprender?" autocomplete="off">
-			<button class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-		</form>
+
 		<nav>
 			<ul>
 				<li><a href="">SOBRE ALEPH</a></li>
@@ -24,20 +36,28 @@
 		<div class="landing">
 			<div class="izquierda">
 				<h1>BIENVENIDO/A DE NUEVO</h1>
-				<form class="registro formulario" method="POST" action="../php/registrar.php">
+				<form class="registro" action="" method="POST">
 					<div class="grupo doble">
-						<input type="text" name="usuario" class="dato mover_dato" required autocomplete="off" pattern="[a-zA-Z0-9]{4,20}" maxlength="20", min="4">
+						<input type="text" name="login_usuario" class="dato mover_dato" required autocomplete="off" pattern="[a-zA-Z0-9]{4,20}" maxlength="20" minlength="4">
 						<label class="placeholder mover">Correo Electrónico o Nombre de Usuario</label>
 						<i class="fa-solid fa-envelope iconos"></i>
 					</div>
 					<div class="grupo doble">
-						<input type="password" id="contra" name="contrasena" class="dato mover_dato" required autocomplete="off" pattern="[a-zA-Z0-9$@.-]{8,24}" maxlength="20", min="8">
+						<input type="password" id="contra" name="login_contrasena" class="dato mover_dato" required autocomplete="off" pattern="[a-zA-Z0-9$@.-]{8,24}" maxlength="20" minlength="8">
 						<label class="placeholder mover">Contraseña</label>
 						<i class="fa-regular fa-eye" id="ojo"></i>
 						<i class="fa-solid fa-lock iconos"></i>
 					</div>
 					<p style="opacity: 0;">Entre 8 y 24 caracteres</p>
 					<input type="submit" name="" value="Ingresar">
+					<?php
+
+					if (isset($_POST["login_usuario"]) && isset($_POST["login_contrasena"])){
+						require_once("../php/main.php");
+						require_once("../php/iniciar_sesion.php");
+					}
+
+					?>
 				</form>
 			</div>
 			<div class="derecha">

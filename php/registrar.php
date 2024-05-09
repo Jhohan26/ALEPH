@@ -147,7 +147,7 @@ if($guardar_usuario->rowCount()==1){
 		<div class="bien">
 			<strong>¡USUARIO REGISTRADO!</strong>
 			<p>El usuario se registro con exito</p>
-			<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+			<button id="cerrar" type="submit" onclick="creacion()">Aceptar</button>
 		</div>
 	</dialog>
 	');

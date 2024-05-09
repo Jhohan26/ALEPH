@@ -30,3 +30,6 @@ function cerrar(){
 	let modal = document.getElementById("dialogo");
 	modal.style.display = "none";
 }
+function creacion(){
+	window.location.href='./inicio.php';
+}

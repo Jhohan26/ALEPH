@@ -1,3 +1,18 @@
+<?php 
+
+session_start();
+
+if (isset($_SESSION["id"])){
+	if (headers_sent()){
+		echo ("<script>window.location.href='../index.php'</script>");
+	}
+	else{
+		header("Location: ../index.php");
+	}
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
