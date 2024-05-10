@@ -29,7 +29,7 @@ if (!isset($_SESSION["id"])){
 		</form>
 		<nav>
 			<ul>
-				<li><a href="">SOBRE ALEPH</a></li>
+				<li><a href="../index.php">SOBRE ALEPH</a></li>
 				<li><a href="">MIS CURSOS</a></li>
 			</ul>
 		</nav>
@@ -66,9 +66,11 @@ if (!isset($_SESSION["id"])){
 			<div class="derecha">
 				<div class="tarjeta">
 					<h3>LOGROS</h3>
+					<h4>Por el momento no has terminado ninguno curso</h4>
 				</div>
 				<div class="tarjeta">
 					<h3>PROGRESO</h3>
+					<h4>No estas realizando ningun curso en el momento</h4>
 				</div>
 			</div>
 		</section>

@@ -127,7 +127,7 @@ $check_usuario=null;
 $contrasena = hash("SHA256", $contrasena);
 
 $guardar_usuario=conexion();
-$guardar_usuario=$guardar_usuario->prepare("INSERT INTO Usuarios VALUES(NULL, :primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:usuario,:correo,:contrasena,'',1)");
+$guardar_usuario=$guardar_usuario->prepare("INSERT INTO Usuarios VALUES(NULL, :primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:usuario,:correo,:contrasena,'',0)");
 
 $marcadores=[
 	":primer_nombre" => $primer_nombre,

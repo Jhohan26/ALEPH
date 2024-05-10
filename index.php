@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<title>ALEPH | cursos</title>
 	<script src="https://kit.fontawesome.com/b48cdd04ea.js" crossorigin="anonymous"></script>
+	<link rel="icon" href="./icon.avif">
 </head>
 <body>
 	<header>
@@ -25,13 +26,11 @@
 
 				if (isset($_SESSION["id"])){
 				?>
-					<li><a href="">SOBRE ALEPH</a></li>
 					<li><a href="./views/inicio.php">MIS CURSOS</a></li>
 					<li><a href="./views/cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
 
 				<?php }else{ ?>
 
-					<li><a href="">SOBRE ALEPH</a></li>
 					<li><a href="./views/inicio.php">INICIAR SESION</a></li>
 					<li><a href="./views/registro.php">REGISTRARSE</a></li>
 

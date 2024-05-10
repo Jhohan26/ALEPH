@@ -24,13 +24,9 @@ if (isset($_SESSION["id"])){
 			<img src="../logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
 		<a>
-		<form class="busqueda" method="GET">
-			<input type="text" name="busqueda" placeholder="¿Que deseas aprender?" autocomplete="off">
-			<button class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-		</form>
 		<nav>
 			<ul>
-				<li><a href="">SOBRE ALEPH</a></li>
+				<li><a href="../index.php">SOBRE ALEPH</a></li>
 				<li><a href="./inicio.php">INICIAR SESION</a></li>
 			</ul>
 		</nav>
