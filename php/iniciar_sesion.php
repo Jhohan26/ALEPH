@@ -1,6 +1,6 @@
 <?php
 
-$usuario = strtolower(limpiar_cadena($_POST["login_usuario"]));
+$usuario = limpiar_cadena($_POST["login_usuario"]);
 $contrasena = strtolower(limpiar_cadena($_POST["login_contrasena"]));
 
 
@@ -33,10 +33,10 @@ if (verificar_datos("[a-zA-Z0-9$@.-]{8,24}", $contrasena)){
 $contrasena = hash("SHA256", $contrasena);
 
 $check_usuario = conexion();
-$check_usuario = $check_usuario->query("SELECT * FROM Usuarios WHERE nombre_usuario='$usuario' OR correo='$usuario'");
+$check_usuario = $check_usuario->query("SELECT * FROM Usuarios WHERE nombre_usuario='$usuario' OR correo LIKE '$usuario'");
 if ($check_usuario->rowCount() == 1){
 	$check_usuario = $check_usuario->fetch();
-	if ((strtolower($check_usuario["nombre_usuario"]) == $usuario || strtolower($check_usuario["correo"]) == $usuario) && $contrasena == $check_usuario["contrasena"]){
+	if (($check_usuario["nombre_usuario"] == $usuario || $check_usuario["correo"] == strtolower($usuario)) && $contrasena == $check_usuario["contrasena"]){
 		$_SESSION["id"] = $check_usuario["id"];
 		$_SESSION["usuario"] = $check_usuario["nombre_usuario"];
 		$_SESSION["correo"] = $check_usuario["correo"];

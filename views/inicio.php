@@ -2,6 +2,15 @@
 
 session_start();
 
+if (isset($_SESSION["id"])){
+	if (headers_sent()){
+		echo ("<script>window.location.href='../index.php'</script>");
+	}
+	else{
+		header("Location: ../index.php");
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +47,7 @@ session_start();
 						<i class="fa-regular fa-eye" id="ojo"></i>
 						<i class="fa-solid fa-lock iconos"></i>
 					</div>
-					<p><a href="./recuperar.php">Olvidaste tu contraseña</a></p>
+					<p><a href="./recuperar.php">¿Olvidaste tu contraseña?</a></p>
 					<input type="submit" name="" value="Ingresar">
 				</form>
 			</div>

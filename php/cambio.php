@@ -121,7 +121,7 @@ else{
 	<dialog id="dialogo">
 		<div class="mal">
 			<strong>¡Ocurrio un error inesperado!</strong>
-			<p>No se pudo cambiar la contraseña, por favor intente nuevamente</p>
+			<p>La contraseña no puede ser la misma que la anterior</p>
 			<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
 		</div>
 	</dialog>

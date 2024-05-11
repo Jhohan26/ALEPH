@@ -33,3 +33,6 @@ function cerrar(){
 function creacion(){
 	window.location.href='./inicio.php';
 }
+function actualizado(){
+	window.location.href='./cuenta.php';
+}

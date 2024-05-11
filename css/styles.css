@@ -12,11 +12,10 @@
 	--blanco: #ffffff;
 	--gris: #d8d8d8;
 	--gris-oscuro: #7f7f7f;
-	--rojo-claro: #ff6685;
-	--rojo-oscuro: #47000e;
+	--rojo: #f61a1a;
 	--x: 45deg;
-	--verde-claro: #48c78e;
-	--verde-oscuro: #113726;
+	--verde: #14ff7e;
+	--transparente: #fff4;
 }
 *{
 	padding: 0;
@@ -28,6 +27,9 @@
 }
 body{
 	background: linear-gradient(to right ,var(--morado), var(--azul));
+}
+a{
+	text-decoration: none;
 }
 header{
 	position: fixed;
@@ -319,34 +321,26 @@ dialog button{
 	border-radius: 1vw;
 	font-weight: 500;
 }
-.bien{
-	background: var(--verde-oscuro);
-	color: var(--verde-claro);
+dialog div{
+	background: var(--transparente);
 }
 .bien button, .bien strong{
-	background: var(--verde-claro);
-	color: var(--verde-oscuro);
+	background: var(--verde);
 }
 .bien p{
-	color: var(--verde-claro);
-}
-
-.mal{
-	background: var(--rojo-oscuro);
-	color: var(--rojo-claro);
+	color: var(--verde);
 }
 .mal button, .mal strong{
-	background: var(--rojo-claro);
-	color: var(--rojo-oscuro);
+	background: var(--rojo);
 }
 .mal p{
-	color: var(--rojo-claro);
+	color: var(--rojo);
 }
 .tarjeta{
-	background: #fff4;
+	background: var(--transparente);
 	backdrop-filter: blur(1vw);
 	border-radius: 1.4vw;
-	border: 0.1vw solid #fff4;
+	border: 0.1vw solid var(--transparente);
 	position: relative;
 }
 .izquierda .tarjeta{
@@ -420,4 +414,101 @@ h5{
 .derecha .tarjeta h4{
 	text-align: center;
 	font-size: 2vw;
+}
+.menu{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	top: 0;
+	padding-top: 4.2vw;
+	right: -16vw;
+	position: absolute;
+	width: 15.4vw;
+	height: 13vw;
+	background: var(--transparente);
+	border-radius: 0 0 0 1vw;
+	transition: 300ms ease-in-out;
+}
+.menu{
+	font-size: 1.2vw;
+}
+.menu a{
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	padding: 0.4vw 0.8vw;
+	border-radius: 0.6vw;
+	background: var(--rojo);
+	font-size: 1.3vw;
+
+}
+.menu h4{
+	width: 14vw;
+	text-align: center;
+	font-size: 1.2vw;
+}
+.cuenta{
+	z-index: 10;
+}
+.cuenta:hover ~ .menu, .menu:hover{
+	right: 0;
+}
+.izquierda .tarjeta a{
+	font-weight: bold;
+	padding: 0.4vw 0.8vw;
+	border-radius: 0.6vw;
+	background: var(--rojo);
+	border: none;
+	font-size: 1.2vw;
+	opacity: 1;
+}
+.izquierda .tarjeta .cambiar{
+	background: var(--azul);
+}
+.derecha .perfil{
+	display: block;
+	margin: auto;
+	width: 30vw;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	border: 0.2vw solid var(--blanco);
+	object-fit: cover;
+}
+.entrada{
+	display: flex;
+	border: 0.2vw solid var(--blanco);
+	height: 3vw;
+	cursor: pointer;
+}
+.entrada span{
+	color: var(--blanco);
+	display: block;
+	font-size: 1vw;
+	padding: 0.8vw;
+	width: calc(100% - 6vw);
+	transition: 200ms ease-in-out;
+}
+.entrada .input{
+	background: var(--blanco);
+	text-align: center;
+	color: var(--morado);
+	width: 6vw;
+	transition: 200ms ease-in-out;
+}
+.entrada:hover span{
+	color: var(--morado);
+	background: var(--blanco);
+}
+.entrada:hover .input{
+	background: none;
+	color: var(--blanco);
+}
+.formulario .desactivado{
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+.formulario .desactivado:hover{
+	background: none;
+	color: var(--blanco);
 }

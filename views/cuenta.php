@@ -38,7 +38,14 @@ if (!isset($_SESSION["id"])){
 		<section class="landing cuenta">
 			<div class="izquierda">
 				<div class="tarjeta">
-					<img class="user" src="../photos/user.jpg">
+					<img class="user" src="<?php 
+
+					$ruta = $_SESSION["foto"] != "" ? $_SESSION["foto"] : "user.jpg";
+					$ruta = "../photos/".$ruta;
+
+					echo($ruta);
+
+					 ?>">
 					<h3>
 						<?php
 						echo($_SESSION["primer_nombre"]." ".$_SESSION["primer_apellido"]);
@@ -60,6 +67,10 @@ if (!isset($_SESSION["id"])){
 					<div class="info">
 						<h5><img src="../logos/SoloBuhoAleph.svg">CORREO ELECTRONICO:</h5>
 						<p><?php echo($_SESSION["correo"]); ?></p>
+					</div>
+					<div>
+						<a href="./logout.php">Cerrar Sesion</a>
+						<a href="./foto.php" class="cambiar">Cambiar Foto</a>
 					</div>
 				</div>
 			</div>
