@@ -45,6 +45,7 @@ if ($check_usuario->rowCount() == 1){
 		$_SESSION["segundo_nombre"] = $check_usuario["segundo_nombre"];
 		$_SESSION["segundo_apellido"] = $check_usuario["segundo_apellido"];
 		$_SESSION["foto"] = $check_usuario["foto"];
+		$_SESSION["rol"] = $check_usuario["rol"];
 		if (headers_sent()){
 			echo ("<script>window.location.href='../index.php'</script>");
 		}

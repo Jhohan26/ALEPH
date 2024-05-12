@@ -30,7 +30,7 @@
 					<li class="cuenta"><a href="./views/cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
 					<div class="menu">
 						<h4><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="24"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
-						<a href="./views/logout.php">Cerrar sesion</a>
+						<a href="./views/logout.php">Cerrar sesión</a>
 					</div>
 
 				<?php }else{ ?>

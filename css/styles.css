@@ -12,9 +12,9 @@
 	--blanco: #ffffff;
 	--gris: #d8d8d8;
 	--gris-oscuro: #7f7f7f;
-	--rojo: #f61a1a;
+	--rojo: #ff1434;
+	--verde: #3bb76d;
 	--x: 45deg;
-	--verde: #14ff7e;
 	--transparente: #fff4;
 }
 *{
@@ -254,7 +254,7 @@ input[type="submit"]:hover{
 	background: var(--blanco);
 	color: var(--morado);
 }
-.fa-eye, .fa-eye-slash{
+.fa-eye, .fa-eye-slash, .fa-angle-down{
 	cursor: pointer;
 	padding: 0.2vw;
 	display: block;
@@ -278,7 +278,7 @@ input[type="submit"]:hover{
 	padding-left: 3.2vw;
 }
 .placeholder span{
-	color: var(--rojo-claro);
+	color: var(--rojo);
 }
 dialog{
 	display: flex;
@@ -511,4 +511,57 @@ h5{
 .formulario .desactivado:hover{
 	background: none;
 	color: var(--blanco);
+}
+.diferente h1, .diferente h4{
+	text-align: right;
+	margin-right: 2vw;
+}
+.diferente .formulario{
+	margin-top: 0.6vw;
+	gap: 4.4vw 1.2vw;
+}
+.diferente .entrada{
+	border-radius: 0.6vw;
+	height: 3.3vw;
+	margin: 0;
+	padding: 0;
+	border: 0.1vw solid var(--blanco);
+}
+.diferente .input{
+	border-radius: 0.4vw 0 0 0.4vw;
+}
+.borde{
+	border-radius: 0 0.4vw 0.4vw 0;
+}
+.alto{
+	height: 9.2vw;
+	resize: none;
+	margin-bottom: 0.4vw;
+}
+.diferente span{
+	padding: 1vw 0.8vw;
+}
+select{
+	font-weight: 500;
+	color: var(--gris);
+	padding: 3vw;
+	font-size: 10vw;
+}
+select{
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+	font-size: 16px;
+	width: 200px;
+	appearance: none;
+}
+
+select option{
+	padding: 10px;
+	background-color: #fff;
+	color: #333;
+}
+.fa-angle-down{
+	pointer-events: none;
 }

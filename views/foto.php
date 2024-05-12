@@ -2,6 +2,15 @@
 
 session_start();
 
+if (!isset($_SESSION["id"])){
+	if (headers_sent()){
+		echo ("<script>window.location.href='../index.php'</script>");
+	}
+	else{
+		header("Location: ../index.php");
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +26,12 @@ session_start();
 		<a>
 		<nav>
 			<ul>
-				<li><a href="../index.php">SOBRE ALEPH</a></li>
-				<li><a href="./registro.php">REGISTRARSE</a></li>
+				<li><a href="./inicio.php">MIS CURSOS</a></li>
+				<li class="cuenta"><a href="./cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
+				<div class="menu">
+					<h4><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="24"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
+					<a href="./logout.php">Cerrar sesión</a>
+				</div>
 			</ul>
 		</nav>
 	</header>
