@@ -44,18 +44,10 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 			</div>
 			<div class="izquierda diferente">
 				<h1>CREA TU CURSO</h1>
-				<h4>Aprende a tu propio ritmo con nosotros</h4>
 				<form class="registro formulario" method="POST" enctype="multipart/form-data" action="../php/nuevo_curso.php">
 					<div class="grupo">
 						<input type="text" name="nombre_curso" class="dato" required autocomplete="off" maxlength="45" minlength="4">
 						<label class="placeholder">Nombre del curso</label>
-					</div>
-					<div class="grupo">
-						<label class="entrada dato">
-							<span class="input">Miniatura</span>
-							<span class="borde">JPG, JPEG, PNG. (MAX 3MB)</span>
-							<input id="archivo" type="file" name="miniatura" accept=".jpg, .png, .jpeg" hidden>
-						</label>
 					</div>
 					<div class="grupo">
 						<select name="categoria" class="dato" required autocomplete="off" maxlength="45" minlength="4">
@@ -92,6 +84,18 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 						</select>
 						<label class="placeholder">Selecciona un nivel</label>
 						<i class="fa-solid fa-angle-down"></i>
+					</div>
+					<div class="grupo doble_archivo">
+						<label class="entrada dato">
+							<span class="input">Miniatura</span>
+							<span class="borde">3MB</span>
+							<input id="archivo" type="file" name="miniatura" accept=".jpg, .png, .jpeg" hidden>
+						</label>
+						<label class="entrada dato otro">
+							<span class="input">Insignia</span>
+							<span class="borde">3MB</span>
+							<input id="archivo" type="file" name="insignia" accept=".jpg, .png, .jpeg" hidden>
+						</label>
 					</div>
 					<div class="grupo doble alto">
 						<textarea type="text" name="descripcion" class="dato alto" required autocomplete="off" maxlength="255" minlength="10"></textarea>

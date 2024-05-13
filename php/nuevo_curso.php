@@ -60,9 +60,9 @@ $check_nivel=null;
 
 
 $img_dir = "../miniaturas/";
-$archivo = $_FILES["miniatura"];
+$miniatura = $_FILES["miniatura"];
 
-if ($archivo["name"] != "" && $archivo["size"] > 0){
+if ($miniatura["name"] != "" && $miniatura["size"] > 0){
 	if (!file_exists($img_dir)){
 		if (!mkdir($img_dir, 0777)){
 		echo('
@@ -79,10 +79,10 @@ if ($archivo["name"] != "" && $archivo["size"] > 0){
 	}
 
 	chmod($img_dir, 0777);
-	$tipo_archivo = explode(".", $archivo["name"]);
-	$tipo_archivo = $tipo_archivo[count($tipo_archivo)-1];
+	$tipo_miniatura = explode(".", $miniatura["name"]);
+	$tipo_miniatura = $tipo_miniatura[count($tipo_miniatura)-1];
 	$formatos = ["jpg", "png", "jpeg"];
-	if (!in_array($tipo_archivo, $formatos)){
+	if (!in_array($tipo_miniatura, $formatos)){
 		echo('
 			<dialog id="dialogo">
 				<div class="mal">
@@ -95,7 +95,7 @@ if ($archivo["name"] != "" && $archivo["size"] > 0){
 		exit();
 	}
 
-	if($archivo["size"] > 3145728){
+	if($miniatura["size"] > 3145728){
 		echo('
 			<dialog id="dialogo">
 				<div class="mal">
@@ -109,13 +109,13 @@ if ($archivo["name"] != "" && $archivo["size"] > 0){
 	}
 
 	$img_nombre = renombrar_fotos($nombre);
-	$foto = $img_nombre . "." . $tipo_archivo;
-	if (!move_uploaded_file($archivo["tmp_name"], $img_dir.$foto)){
+	$ruta_miniatura = $img_nombre . "." . $tipo_miniatura;
+	if (!move_uploaded_file($miniatura["tmp_name"], $img_dir.$ruta_miniatura)){
 		echo('
 			<dialog id="dialogo">
 				<div class="mal">
 					<strong>¡Ocurrio un error inesperado!</strong>
-					<p>No podemos subir la imagen al sistema en este momento, por favor intente nuevamente</p>
+					<p>No podemos subir la imagen 1 al sistema en este momento, por favor intente nuevamente</p>
 					<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
 				</div>
 			</dialog>
@@ -137,14 +137,95 @@ else{
 	exit();
 }
 
+
+
+$img_dir = "../insignias/";
+$insignia = $_FILES["insignia"];
+
+if ($insignia["name"] != "" && $insignia["size"] > 0){
+	if (!file_exists($img_dir)){
+		if (!mkdir($img_dir, 0777)){
+		echo('
+			<dialog id="dialogo">
+				<div class="mal">
+					<strong>¡Ocurrio un error inesperado!</strong>
+					<p>Error al crear el directorio</p>
+					<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				</div>
+			</dialog>
+			');
+			exit();
+		}
+	}
+
+	chmod($img_dir, 0777);
+	$tipo_insignia = explode(".", $insignia["name"]);
+	$tipo_insignia = $tipo_insignia[count($tipo_insignia)-1];
+	$formatos = ["jpg", "png", "jpeg"];
+	if (!in_array($tipo_insignia, $formatos)){
+		echo('
+			<dialog id="dialogo">
+				<div class="mal">
+					<strong>¡Ocurrio un error inesperado!</strong>
+					<p>La insignia que ha seleccionado es de un formato que no está permitido</p>
+					<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				</div>
+			</dialog>
+			');
+		exit();
+	}
+
+	if($insignia["size"] > 3145728){
+		echo('
+			<dialog id="dialogo">
+				<div class="mal">
+					<strong>¡Ocurrio un error inesperado!</strong>
+					<p>La insignia que ha seleccionado supera el límite de peso permitido</p>
+					<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				</div>
+			</dialog>
+			');
+		exit();
+	}
+
+	$img_nombre = renombrar_fotos($nombre);
+	$ruta_insignia = $img_nombre . "." . $tipo_insignia;
+	if (!move_uploaded_file($insignia["tmp_name"], $img_dir.$ruta_insignia)){
+		echo('
+			<dialog id="dialogo">
+				<div class="mal">
+					<strong>¡Ocurrio un error inesperado!</strong>
+					<p>No podemos subir la imagen 2 al sistema en este momento, por favor intente nuevamente</p>
+					<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				</div>
+			</dialog>
+			');
+		exit();
+	}
+
+}
+else{
+	echo('
+		<dialog id="dialogo">
+			<div class="mal">
+				<strong>¡Ocurrio un error inesperado!</strong>
+				<p>No has seleccionado ninguna insignia</p>
+				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+			</div>
+		</dialog>
+		');
+	exit();
+}
+
 $guardar_curso=conexion();
-$guardar_curso=$guardar_curso->prepare("INSERT INTO Cursos VALUES(NULL,:nombre,:descripcion,NULL,:foto,:fecha,:nivel,:categoria,:profesor)");
+$guardar_curso=$guardar_curso->prepare("INSERT INTO Cursos VALUES(NULL,:nombre,:descripcion,:miniatura,:insignia,:fecha,:nivel,:categoria,:profesor)");
 
 
 $marcadores=[
 	":nombre" => $nombre,
 	":descripcion" => $descripcion,
-	":foto" => $foto,
+	":miniatura" => $ruta_miniatura,
+	":insignia" => $ruta_insignia,
 	":fecha" => $fecha,
 	":nivel" => $nivel,
 	":categoria" => $categoria,
@@ -165,9 +246,11 @@ if($guardar_curso->rowCount()==1){
 	');
 }
 else{
-	if (is_file($img_dir.$foto)){
-		chmod($img_dir.$foto, 0777);
-		unlink($img_dir.$foto);
+	if (is_file($img_dir.$ruta_minuatura) || is_file($img_dir.$ruta_insignia)){
+		chmod($img_dir.$ruta_minuatura, 0777);
+		unlink($img_dir.$ruta_minuatura);
+		chmod($img_dir.$ruta_insignia, 0777);
+		unlink($img_dir.$ruta_insignia);
 	}
 	echo('
 		<dialog id="dialogo">

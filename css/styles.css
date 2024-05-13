@@ -345,8 +345,7 @@ dialog div{
 }
 .izquierda .tarjeta{
 	width: 25vw;
-	height: 80vh;
-	min-height: 35vw;
+	height: 35vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -520,14 +519,14 @@ h5{
 	margin-top: 0.6vw;
 	gap: 4.4vw 1.2vw;
 }
-.diferente .entrada{
+.entrada{
 	border-radius: 0.6vw;
 	height: 3.3vw;
 	margin: 0;
 	padding: 0;
 	border: 0.1vw solid var(--blanco);
 }
-.diferente .input{
+.input{
 	border-radius: 0.4vw 0 0 0.4vw;
 }
 .borde{
@@ -536,10 +535,21 @@ h5{
 .alto{
 	height: 9.2vw;
 	resize: none;
-	margin-bottom: 0.4vw;
+	margin-bottom: 1vw;
 }
-.diferente span{
+.entrada span{
 	padding: 1vw 0.8vw;
+}
+.diferente .entrada{
+	width: 47%;
+}
+.landing .diferente .doble_archivo{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+.doble_archivo .otro{
+	right: 0;
 }
 select{
 	font-weight: 500;
@@ -564,4 +574,20 @@ select option{
 }
 .fa-angle-down{
 	pointer-events: none;
+}
+.landing .todo{
+	width: 80%;
+	margin: auto;
+}
+.landing .todo h1, .landing .todo h2{
+	text-align: center;
+}
+.landing .todo h1{
+	font-size: 20.2vw;
+	text-shadow: 1vw 0 0 var(--gris-oscuro);
+}
+.landing .todo h2{
+	font-size: 4vw;
+	margin-top: 6vw;
+	font-family: "Nebulax";
 }
