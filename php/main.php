@@ -1,17 +1,14 @@
 <?php
 
-// conexion a base de dato
 function conexion(){
 	$conexion = new PDO("mysql:host=localhost;dbname=cursos", "root", "");
 	return $conexion;
 }
 
-// verifica los datos
 function verificar_datos($filtro, $cadena){
 	return !preg_match("/^".$filtro."$/", $cadena);
 }
 
-// evita inyecciones sql
 function limpiar_cadena($cadena){
 	$cadena=trim($cadena);
 	$cadena=stripslashes($cadena);

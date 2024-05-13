@@ -101,7 +101,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 						<textarea type="text" name="descripcion" class="dato alto" required autocomplete="off" maxlength="255" minlength="10"></textarea>
 						<label class="placeholder">Descripción</label>
 					</div>
-					<input type="submit" name="" value="Ingresar">
+					<input type="submit" name="" value="Crear">
 				</form>
 			</div>
 		</div>

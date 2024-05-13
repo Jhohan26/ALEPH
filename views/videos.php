@@ -72,7 +72,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 						<textarea type="text" name="descripcion_video" class="dato alto" required autocomplete="off" maxlength="255" minlength="10"></textarea>
 						<label class="placeholder">Descripción del video</label>
 					</div>
-						<input id="enviar" class="desactivado" type="submit" value="Actualizar" disabled>
+						<input id="enviar" class="desactivado" type="submit" value="Subir video" disabled>
 				</form>
 			</div>
 			<div class="derecha">

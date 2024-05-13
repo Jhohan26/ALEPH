@@ -1,7 +1,7 @@
 <?php
 
 $usuario = limpiar_cadena($_POST["login_usuario"]);
-$contrasena = strtolower(limpiar_cadena($_POST["login_contrasena"]));
+$contrasena = limpiar_cadena($_POST["login_contrasena"]);
 
 
 if ($usuario == "" || $contrasena == ""){

@@ -54,7 +54,7 @@ if (isset($_SESSION["id"])){
 						<i class="fa-solid fa-lock iconos"></i>
 					</div>
 					<p style="opacity: 0;">Entre 8 y 24 caracteres</p>
-					<input type="submit" name="" value="Ingresar">
+					<input type="submit" name="" value="Cambiar">
 				</form>
 			</div>
 			<div class="derecha">

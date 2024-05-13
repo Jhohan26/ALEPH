@@ -20,10 +20,10 @@ if ($id == "" || $curso == "" || $descripcion == ""){
 }
 
 
-$check_producto=conexion();
-$check_producto=$check_producto->query("SELECT * FROM Usuarios WHERE id='$id' AND rol=1");
+$check_usuario=conexion();
+$check_usuario=$check_usuario->query("SELECT * FROM Usuarios WHERE id='$id' AND rol=1");
 
-if($check_producto->rowCount()!=1){
+if($check_usuario->rowCount()!=1){
 	echo('
 		<dialog id="dialogo">
 			<div class="mal">
@@ -35,7 +35,7 @@ if($check_producto->rowCount()!=1){
 		');
 	exit();
 }
-$check_producto=null;
+$check_usuario=null;
 
 
 if($_FILES['video']['name']=="" || $_FILES['video']['size']==0){
@@ -109,8 +109,8 @@ if(!move_uploaded_file($_FILES['video']['tmp_name'], $img_dir.$video)){
 }
 
 
-$actualizar_producto=conexion();
-$actualizar_producto=$actualizar_producto->prepare("INSERT INTO Videos VALUES(NULL,:video,:descripcion,:curso)");
+$guardar_video=conexion();
+$guardar_video=$guardar_video->prepare("INSERT INTO Videos VALUES(NULL,:video,:descripcion,:curso)");
 
 $marcadores=[
 	":video"=>$video,
@@ -118,7 +118,7 @@ $marcadores=[
 	":curso"=>$curso
 ];
 
-if($actualizar_producto->execute($marcadores)){
+if($guardar_video->execute($marcadores)){
 	echo('
 	<dialog id="dialogo">
 		<div class="bien">
@@ -144,6 +144,6 @@ if($actualizar_producto->execute($marcadores)){
 		</dialog>
 		');
 }
-$actualizar_producto=null;
+$guardar_video=null;
 
 ?>

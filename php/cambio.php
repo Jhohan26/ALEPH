@@ -4,8 +4,8 @@ require_once("./main.php");
 
 
 $correo = strtolower($_POST["correo"]);
-$primera_contrasena = $_POST["primera_contrasena"];
-$segunda_contrasena = $_POST["segunda_contrasena"];
+$primera_contrasena = limpiar_cadena($_POST["primera_contrasena"]);
+$segunda_contrasena = limpiar_cadena($_POST["segunda_contrasena"]);
 
 
 if ($correo == "" || $primera_contrasena == "" || $segunda_contrasena == ""){
@@ -94,18 +94,18 @@ if($correo!=""){
 
 $primera_contrasena = hash("SHA256", $primera_contrasena);
 
-$guardar_usuario=conexion();
+$cambiar_contrasena=conexion();
 
-$guardar_usuario=$guardar_usuario->prepare("UPDATE Usuarios SET contrasena=:contrasena WHERE correo=:correo");
+$cambiar_contrasena=$cambiar_contrasena->prepare("UPDATE Usuarios SET contrasena=:contrasena WHERE correo=:correo");
 
 $marcadores=[
 	":correo" => $correo,
 	":contrasena" => $primera_contrasena
 ];
 
-$guardar_usuario->execute($marcadores);
+$cambiar_contrasena->execute($marcadores);
 
-if($guardar_usuario->rowCount()==1){
+if($cambiar_contrasena->rowCount()==1){
 	echo('
 	<dialog id="dialogo">
 		<div class="bien">
@@ -127,6 +127,6 @@ else{
 	</dialog>
 	');
 }
-$guardar_usuario=null;
+$cambiar_contrasena=null;
 
 ?>

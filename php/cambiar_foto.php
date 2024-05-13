@@ -5,11 +5,11 @@ require_once("main.php");
 
 $id = $_SESSION["id"];
 
-$check_producto=conexion();
-$check_producto=$check_producto->query("SELECT * FROM Usuarios WHERE id='$id'");
+$check_usuario=conexion();
+$check_usuario=$check_usuario->query("SELECT * FROM Usuarios WHERE id='$id'");
 
-if($check_producto->rowCount()==1){
-	$datos=$check_producto->fetch();
+if($check_usuario->rowCount()==1){
+	$datos=$check_usuario->fetch();
 }else{
 	echo('
 		<dialog id="dialogo">
@@ -22,7 +22,7 @@ if($check_producto->rowCount()==1){
 		');
 	exit();
 }
-$check_producto=null;
+$check_usuario=null;
 
 
 /*== Comprobando si se ha seleccionado una imagen ==*/
@@ -132,15 +132,15 @@ if(is_file($img_dir.$datos["foto"]) && $datos["foto"]!=$imagen){
 }
 
 
-$actualizar_producto=conexion();
-$actualizar_producto=$actualizar_producto->prepare("UPDATE Usuarios SET foto=:imagen WHERE id=:id");
+$actualizar_usuario=conexion();
+$actualizar_usuario=$actualizar_usuario->prepare("UPDATE Usuarios SET foto=:imagen WHERE id=:id");
 
 $marcadores=[
 	":imagen"=>$imagen,
 	":id"=>$id
 ];
 
-if($actualizar_producto->execute($marcadores)){
+if($actualizar_usuario->execute($marcadores)){
 	echo('
 	<dialog id="dialogo">
 		<div class="bien">
@@ -168,4 +168,6 @@ if($actualizar_producto->execute($marcadores)){
 		</dialog>
 		');
 }
-$actualizar_producto=null;
+$actualizar_usuario=null;
+
+?>
