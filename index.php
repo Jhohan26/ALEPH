@@ -16,7 +16,7 @@
 			<img src="./logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
 		<a>
-		<form class="busqueda" method="GET">
+		<form class="busqueda" method="GET" action="./views/catalogo.php">
 			<input type="text" name="busqueda" placeholder="¿Que deseas aprender?" autocomplete="off">
 			<button class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
 		</form>
@@ -48,7 +48,7 @@
 			<div class="izquierda">
 				<h1>APRENDE, DESCUBRE Y SUPERATE</h1>
 				<h4>La nueva plataforma de aprendizaje digital</h4>
-				<a href="" class="boton_pa_juan">
+				<a href="./views/catalogo.php" class="boton_pa_juan">
 					<i></i>
 					<i></i>
 					<span>Explorar</span>

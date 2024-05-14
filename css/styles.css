@@ -8,14 +8,15 @@
 }
 :root{
 	--morado: #770080;
+	--intermedio: #8009B8;
 	--azul: #34037b;
 	--blanco: #ffffff;
 	--gris: #d8d8d8;
 	--gris-oscuro: #7f7f7f;
-	--rojo: #ff1434;
-	--verde: #3bb76d;
+	--rojo: #fa281b;
+	--verde: #1bfa4c;
 	--x: 45deg;
-	--transparente: #fff4;
+	--transparente: #fff5;
 }
 *{
 	padding: 0;
@@ -24,6 +25,7 @@
 	color: var(--blanco);
 	font-size: 1.4vw;
 	font-family: "Inter";
+	transition: 200ms ease-in-out;
 }
 body{
 	background: linear-gradient(to right ,var(--morado), var(--azul));
@@ -66,7 +68,6 @@ header{
 	height: 3vw;
 	width: 30vw;
 	border-radius: 1.5vw;
-	transition: 150ms ease-in-out;
 	opacity: 0.8;
 }
 .busqueda:hover{
@@ -105,7 +106,6 @@ li a{
 	font-size: 1.2vw;
 	text-decoration: none;
 	font-family: "Nebulax";
-	transition: 200ms ease-in-out;
 	color: var(--gris);
 	opacity: 0.7;
 	padding: 1vw 0;
@@ -209,7 +209,6 @@ button{
 	background: none;
 	border-radius: 0.6vw;
 	border: 0.1vw solid var(--blanco);
-	transition: 100ms ease-in-out;
 	font-size: 1.2vw;
 }
 .dato:focus{
@@ -221,7 +220,6 @@ button{
 	padding: 0 0.2vw;
 	margin: 0 1.8vw;
 	backdrop-filter: blur(0.3vw);
-	transition: 200ms ease-in-out;
 	pointer-events: none;
 	color: var(--gris);
 }
@@ -246,7 +244,6 @@ input[type="submit"]{
 	font-size: 1.6vw;
 	width: 48%;
 	border-radius: 1vw;
-	transition: 100ms ease-in-out;
 	font-weight: 500;
 	cursor: pointer;
 }
@@ -324,17 +321,19 @@ dialog button{
 dialog div{
 	background: var(--transparente);
 }
-.bien button, .bien strong{
-	background: var(--verde);
+dialog button, dialog strong{
+	background: var(--morado);
+	font-size: 1.5vw;
 }
-.bien p{
-	color: var(--verde);
+dialog p{
+	font-weight: 500;
+	color: var(--morado);
 }
-.mal button, .mal strong{
-	background: var(--rojo);
+dialog .bien{
+	box-shadow: 0 0 2vw var(--verde);
 }
-.mal p{
-	color: var(--rojo);
+dialog .mal{
+	box-shadow: 0 0 2vw var(--rojo);
 }
 .tarjeta{
 	background: var(--transparente);
@@ -427,7 +426,6 @@ h5{
 	height: 13vw;
 	background: var(--transparente);
 	border-radius: 0 0 0 1vw;
-	transition: 300ms ease-in-out;
 }
 .menu{
 	font-size: 1.2vw;
@@ -486,14 +484,12 @@ h5{
 	font-size: 1vw;
 	padding: 0.8vw;
 	width: calc(100% - 6vw);
-	transition: 200ms ease-in-out;
 }
 .entrada .input{
 	background: var(--blanco);
 	text-align: center;
 	color: var(--morado);
 	width: 6vw;
-	transition: 200ms ease-in-out;
 }
 .entrada:hover span{
 	color: var(--morado);
@@ -590,4 +586,75 @@ select option{
 	font-size: 4vw;
 	margin-top: 6vw;
 	font-family: "Nebulax";
+}
+.catalogo{
+	display: grid;
+	padding: 8vw 6vw;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: start;
+	gap: 4vw 5vw;
+}
+.curso{
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+}
+.miniatura{
+	width: 100%;
+	aspect-ratio: 16/9;
+	object-fit: cover;
+	border-radius: 1vw;
+	opacity: 0.9;
+	filter: brightness(0.8) saturate(0.8);
+}
+.curso:hover .miniatura, .curso:hover .autor img{
+	opacity: 1;
+	filter: brightness(1) saturate(1.1);
+}
+.curso h4{
+	font-size: 1.6vw;
+	margin: 0.4vw 0;
+}
+.autor{
+	display: flex;
+	align-items: center;
+}
+.curso .autor img{
+	width: 2.4vw;
+	height: 2.4vw;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	margin-right: 0.4vw;
+	filter: brightness(0.8) saturate(0.8);
+}
+.curso .autor p{
+	font-size: 1vw;
+}
+.catalogo{
+	align-content: start;
+}
+.catalogo h2{
+	grid-column: 1/4;
+	text-align: center;
+	margin: 4vw;
+}
+.catalogo .filtro{
+	grid-column: 1/4;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 18vw 0 0;
+}
+.catalogo .filtro .dato{
+	position: relative;
+}
+.catalogo .filtro .grupo{
+	width: 22vw;
+	display: flex;
+}
+.catalogo .filtro input[type="submit"]{
+	width: 18vw;
+	height: 3.4vw;
+	margin: 0;
+	border: 0.1vw solid var(--blanco);
 }

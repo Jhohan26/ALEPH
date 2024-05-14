@@ -50,7 +50,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 						<label class="placeholder">Nombre del curso</label>
 					</div>
 					<div class="grupo">
-						<select name="categoria" class="dato" required autocomplete="off" maxlength="45" minlength="4">
+						<select name="categoria" class="dato" required autocomplete="off">
 							<option disabled selected></option>
 							<?php
 							$categorias=conexion();
@@ -68,7 +68,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 						<i class="fa-solid fa-angle-down"></i>
 					</div>
 					<div class="grupo">
-						<select name="nivel" class="dato" required autocomplete="off" maxlength="45" minlength="4">
+						<select name="nivel" class="dato" required autocomplete="off">
 							<option disabled selected></option>
 							<?php
 							$niveles=conexion();
@@ -98,7 +98,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 						</label>
 					</div>
 					<div class="grupo doble alto">
-						<textarea type="text" name="descripcion" class="dato alto" required autocomplete="off" maxlength="255" minlength="10"></textarea>
+						<textarea type="text" name="descripcion" class="dato alto" required autocomplete="off" maxlength="512" minlength="10"></textarea>
 						<label class="placeholder">Descripción</label>
 					</div>
 					<input type="submit" name="" value="Crear">

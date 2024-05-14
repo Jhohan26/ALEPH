@@ -43,7 +43,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 				<h1>CREAR PUBLICACION</h1>
 				<form class="registro formulario" action="../php/subir_video.php" method="POST" enctype="multipart/form-data">
 					<div class="grupo">
-						<select name="curso" class="dato" required autocomplete="off" maxlength="45" minlength="4">
+						<select name="curso" class="dato" required autocomplete="off">
 							<option disabled selected></option>
 							<?php
 							$profesor = $_SESSION["id"];
@@ -69,7 +69,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 						</label>
 					</div>
 					<div class="grupo doble alto">
-						<textarea type="text" name="descripcion_video" class="dato alto" required autocomplete="off" maxlength="255" minlength="10"></textarea>
+						<textarea type="text" name="descripcion_video" class="dato alto" required autocomplete="off" maxlength="512" minlength="10"></textarea>
 						<label class="placeholder">Descripción del video</label>
 					</div>
 						<input id="enviar" class="desactivado" type="submit" value="Subir video" disabled>
