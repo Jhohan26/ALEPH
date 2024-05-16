@@ -16,7 +16,7 @@
 	--rojo: #fa281b;
 	--verde: #1bfa4c;
 	--x: 45deg;
-	--transparente: #fff5;
+	--transparente: #fff6;
 }
 *{
 	padding: 0;
@@ -118,7 +118,7 @@ li a:hover{
 .landing{
 	display: flex;
 	align-items: center;
-	height: 100vh;
+	height: 47vw;
 	padding: 8vw;
 	padding-top: 16vw;
 }
@@ -657,4 +657,60 @@ select option{
 	height: 3.4vw;
 	margin: 0;
 	border: 0.1vw solid var(--blanco);
+}
+.cursos{
+	padding: 10vw;
+	display: flex;
+	flex-direction: column;
+	gap: 2vw;
+	height: auto;
+}
+.cursos .tarjeta{
+	padding: 2vw;
+	width: 100%;
+	height: 18vw;
+	display: flex;
+}
+.cursos .tarjeta div{
+	padding: 2vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.cursos .tarjeta h2{
+	font-size: 1.8vw;
+	margin-bottom: 1vw;
+}
+.cursos .tarjeta img{
+	height: 100%;
+	width: auto;
+	aspect-ratio: 16/9;
+	border-radius: 1vw;
+}
+.cursos .tarjeta .botones{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.cursos .tarjeta button{
+	width: 14vw;
+	height: 3.4vw;
+	border-radius: 1vw;
+	border: none;
+	font-weight: bold;
+}
+.cursos .tarjeta .ir{
+	background: var(--azul);
+}
+.cursos .tarjeta .eliminar{
+	background: var(--rojo);
+}
+.cursos button{
+	width: 14vw;
+	height: 3.4vw;
+	padding: 0 0.4vw 0 0.2vw;
+	border-radius: 1vw;
+	border: none;
+	font-weight: bold;
+	background: var(--verde);
 }

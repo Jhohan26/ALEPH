@@ -28,7 +28,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 		<a>
 		<nav>
 			<ul>
-				<li><a href="./inicio.php">MIS CURSOS</a></li>
+				<li><a href="./cursos.php">MIS CURSOS</a></li>
 				<li class="cuenta"><a href="./cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
 				<div class="menu">
 					<h4><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="24"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
@@ -58,7 +58,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 							if($categorias->rowCount()>0){
 								$categorias=$categorias->fetchAll();
 								foreach($categorias as $registro){
-									echo '<option value="'.$registro['id'].'" >'.$registro['nombre'].'</option>';
+									echo('<option value="'.$registro['id'].'" >'.$registro['nombre'].'</option>');
 								}
 							}
 							$categorias=null;
@@ -76,7 +76,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 							if($niveles->rowCount()>0){
 								$niveles=$niveles->fetchAll();
 								foreach($niveles as $registro){
-									echo '<option value="'.$registro['id'].'" >'.$registro['nombre'].'</option>';
+									echo('<option value="'.$registro['id'].'" >'.$registro['nombre'].'</option>');
 								}
 							}
 							$niveles=null;

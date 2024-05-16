@@ -24,7 +24,7 @@ session_start();
 
 				if (isset($_SESSION["id"])){
 				?>
-					<li><a href="./inicio.php">MIS CURSOS</a></li>
+					<li><a href="./cursos.php">MIS CURSOS</a></li>
 					<li class="cuenta"><a href="./cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
 					<div class="menu">
 						<h4><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="24"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
@@ -49,17 +49,26 @@ session_start();
 			$busqueda = limpiar_cadena($_GET["busqueda"]);
 			$nivel = limpiar_cadena($_GET["nivel"]);
 			$categoria = limpiar_cadena($_GET["categoria"]);
+			$busqueda = explode(" ", $busqueda);
+			$resultado = [];
+			foreach ($busqueda as $palabra){
+				$resultado[] = " C.nombre LIKE '%$palabra%' OR C.descripcion LIKE '%$palabra%' OR U.nombre_usuario LIKE '%$palabra%' OR N.nombre LIKE '%$palabra%' OR CA.nombre LIKE '%$palabra%'";
+			}
+			$resultado = join("OR", $resultado);
 			if($busqueda == ""){
 				$cursos=$cursos->query("SELECT C.nombre, C.miniatura, U.nombre_usuario, U.foto FROM Cursos AS C INNER JOIN Usuarios AS U ON C.profesor = U.id");
 			}
 			else{
-				$cursos=$cursos->query("SELECT C.nombre, C.miniatura, U.nombre_usuario, U.foto FROM
-				Cursos AS C INNER JOIN Usuarios AS U ON C.profesor = U.id INNER JOIN Niveles AS N ON C.niveles_id = N.id INNER JOIN Categorias AS CA ON C.Categorias_id = CA.id
-				WHERE C.nombre LIKE '%$busqueda%' OR C.descripcion LIKE '%$busqueda%' OR U.nombre_usuario LIKE '%$busqueda%' OR N.nombre LIKE '%$busqueda%' OR CA.nombre LIKE '%$busqueda%'");
+				$cursos=$cursos->query("SELECT C.nombre, C.miniatura, U.nombre_usuario, U.foto
+				FROM Cursos AS C
+				INNER JOIN Usuarios AS U ON C.profesor = U.id
+				INNER JOIN Niveles AS N ON C.niveles_id = N.id
+				INNER JOIN Categorias AS CA ON C.Categorias_id = CA.id
+				WHERE $resultado");
 			}
 			if($cursos->rowCount()>0){
 				?>
-<!-- 				<form class="filtro" method="GET" action="">
+				<!-- <form class="filtro" method="GET" action="">
 					<div class="grupo">
 						<select name="categoria" class="dato" autocomplete="off">
 							<option disabled selected></option>
@@ -114,6 +123,7 @@ session_start();
 				}
 			}
 			else{
+				$busqueda = join(" ", $busqueda);
 				echo("<h2>No se ha encontrado ningun resultado para &quot;$busqueda&quot; :(</h2>");
 			}
 			$cursos=null;

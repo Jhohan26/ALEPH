@@ -28,7 +28,7 @@ if (!isset($_SESSION["id"])){
 		<nav>
 			<ul>
 				<li><a href="../index.php">SOBRE ALEPH</a></li>
-				<li><a href="">MIS CURSOS</a></li>
+				<li><a href="./cursos.php">MIS CURSOS</a></li>
 			</ul>
 		</nav>
 	</header>
