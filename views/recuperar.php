@@ -26,7 +26,7 @@ if (isset($_SESSION["id"])){
 		<a>
 		<nav>
 			<ul>
-				<li><a href="../index.php">SOBRE ALEPH</a></li>
+				<li><a href="./inicio.php">INICIAR SESION</a></li>
 				<li><a href="./registro.php">REGISTRARSE</a></li>
 			</ul>
 		</nav>

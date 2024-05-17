@@ -6,6 +6,11 @@
 	font-family: "Nebulax";
 	src: url("../fonts/Nebulax.ttf");
 }
+@keyframes scroll{
+	to{
+		transform: translate(calc(-50% - 0.5vw));
+	}
+}
 :root{
 	--morado: #770080;
 	--intermedio: #8009B8;
@@ -102,7 +107,7 @@ ul{
 	gap: 5vw;
 	align-items: center;
 }
-li a{
+nav li a{
 	font-size: 1.2vw;
 	text-decoration: none;
 	font-family: "Nebulax";
@@ -110,10 +115,13 @@ li a{
 	opacity: 0.7;
 	padding: 1vw 0;
 }
-li a:hover{
+nav li a:hover{
 	color: var(--blanco);
 	opacity: 1;
 	text-shadow: 0 0 1vw var(--blanco);
+}
+nav ul .mano{
+	width: 1.6vw;
 }
 .landing{
 	display: flex;
@@ -231,7 +239,7 @@ button{
 }
 .registro p{
 	color: var(--gris);
-	margin: -1.8vw 0;
+	margin: -1.4vw 0;
 	opacity: 0.6;
 }
 input[type="submit"]{
@@ -302,7 +310,7 @@ dialog div{
 	padding-bottom: 1vw;
 }
 dialog p{
-	margin-top: 2vw;
+	margin: 2vw 2vw 0;
 }
 dialog strong{
 	display: block;
@@ -352,9 +360,9 @@ dialog .mal{
 	padding: 1vw;
 }
 hr{
-	width: 84%;
+	width: 85%;
 	margin: 0.4vw;
-	border-color: var(--morado);
+	border: 0.1vw solid var(--morado);
 }
 .tarjeta .user{
 	object-fit: cover;
@@ -507,6 +515,12 @@ h5{
 	background: none;
 	color: var(--blanco);
 }
+.formulario .iconodes{
+	opacity: 0.4;
+}
+.formulario .desactivado:hover + #icono{
+	color: var(--blanco);
+}
 .diferente h1, .diferente h4{
 	text-align: right;
 	margin-right: 2vw;
@@ -514,6 +528,20 @@ h5{
 .diferente .formulario{
 	margin-top: 0.6vw;
 	gap: 4.4vw 1.2vw;
+}
+.formulario .video[type="submit"]{
+	width: 16vw;
+	padding: 0 1vw 0 3vw;
+}
+.formulario .video[type="submit"]:hover + .fa-cloud-arrow-up{
+	color: var(--morado);
+}
+#icono{
+	position: absolute;
+	left: 9.8vw;
+	top: 40.6vw;
+	font-size: 1.8vw;
+	pointer-events: none;
 }
 .entrada{
 	border-radius: 0.6vw;
@@ -686,6 +714,7 @@ select option{
 	width: auto;
 	aspect-ratio: 16/9;
 	border-radius: 1vw;
+	object-fit: cover;
 }
 .cursos .tarjeta .botones{
 	display: flex;
@@ -713,4 +742,210 @@ select option{
 	border: none;
 	font-weight: bold;
 	background: var(--verde);
+}
+.sobre{
+	display: flex;
+	padding: 2vw 8vw 2vw 0;
+	text-align: right;
+}
+.sobre > div{
+	width: 48vw;
+}
+.sobre .imagenes{
+	position: relative;
+}
+.sobre .imagenes img{
+	width: 40vw;
+	display: block;
+	opacity: 0.9;
+	filter: brightness(0.8);
+}
+.sobre .imagenes .grande{
+	filter: none;
+	opacity: 1;
+}
+.sobre .imagenes .pequeno{
+	position: absolute;
+	width: 12vw;
+}
+.sobre .imagenes .pequeno:hover{
+	filter: none;
+	opacity: 1;
+	transform: scale(1.1);
+}
+.sobre .imagenes .i1{
+	top: 2vw;
+	right: 0;
+}
+.sobre .imagenes .i2{
+	top: calc(50% - 6vw);
+	right: -2vw;
+}
+.sobre .imagenes .i3{
+	bottom: 2vw;
+	right: 0;
+}
+.sobre .derecha{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-left: 8vw;
+	gap: 0.4vw;
+}
+.sobre .derecha h2, .servicios .izquierda h2{
+	font-family: "Nebulax";
+	font-size: 4vw;
+}
+.sobre .derecha p, .sobre .derecha b{
+	font-size: 2vw;
+	text-wrap: pretty;
+}
+.servicios{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 2vw 8vw;
+}
+.servicios .carrusel{
+	position: relative;
+	height: 34vw;
+	width: 43vw;
+	padding: 0 2vw;
+	overflow: hidden;
+}
+.servicios .carrusel button{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 3.4vw;
+	height: 3.4vw;
+	border-radius: 50%;
+	text-align: center;
+	border: none;
+	background: var(--transparente);
+	top: 50%;
+	z-index: 5;
+	outline: none;
+}
+.servicios .carrusel button i{
+	font-size: 1.8vw;
+	pointer-events: none;
+}
+.este{
+	left: 0;
+}
+.oeste{
+	right: 0;
+}
+.servicios .derecha img{
+	width: 40vw;
+}
+.slider h3, .slider p{
+	text-align: center;
+	width: 38vw;
+}
+.servicios .slider{
+	padding: 0;
+	margin: 0;
+}
+.servicios .slider img{
+	display: block;
+	margin: auto;
+	width: 26vw;
+}
+.todo{
+	display: flex;
+	gap: 2vw;
+	overflow: visible;
+	transition: 500ms ease-in-out;
+}
+.carrusel .mover_js0{
+	transform: translateX(0);
+}
+.carrusel .mover_js1{
+	transform: translateX(-40vw);
+}
+.carrusel .mover_js2{
+	transform: translateX(-80vw);
+}
+
+
+footer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2vw 2vw 0 2vw;
+	background-color: var(--negro);
+}
+footer ul{
+	display: flex;
+	justify-content: center;
+	gap: 1vw;
+	list-style: none;
+	margin: 1vw;
+}
+footer li{
+	border-radius: 50%;
+}
+.facebook{
+	background: #1177f7;
+}
+.instagram{
+	background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.whatsapp{
+	background: #25cc64;
+}
+footer .redes{
+	display: flex;
+	width: 3.6vw;
+	height: 3.6vw;
+	justify-content: center;
+	align-items: center;
+	background: #c0c0ff33;
+	padding: 0.6vw;
+	border-radius: 50%;
+}
+footer .redes:hover{
+	transform: translate(0.4vw, 0.4vw) rotate(20deg);
+}
+footer i{
+	font-size: 2.2vw;
+	color: var(--blanco);
+}
+footer p{
+	font-size: 1vw;
+/*	margin-bottom: 1vw;*/
+}
+.scroll{
+	width: 96vw;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.elementos{
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 0;
+}
+.elementos li{
+	font-size: 1.2vw;
+	border-radius: 1vw;
+	margin: 1vw 0.2vw 0;
+	font-family: "Nebulax";
+	color: var(--gris);
+	opacity: 0.8;
+
+}
+.scroll[data-animated=true]{
+	overflow: hidden;
+	mask: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+	-webkit-mask: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.scroll[data-animated=true] .texto{
+	width: max-content;
+	flex-wrap: nowrap;
+	animation: scroll 40s linear infinite;
 }

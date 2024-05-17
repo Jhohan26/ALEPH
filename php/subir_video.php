@@ -6,6 +6,20 @@ $id = $_SESSION["id"];
 $curso = limpiar_cadena($_POST["curso"]);
 $descripcion = limpiar_cadena($_POST["descripcion_video"]);
 
+
+if(($_FILES['video']['size']/1024)>512000){
+	echo('
+		<dialog id="dialogo">
+			<div class="mal">
+				<strong>¡Ocurrio un error inesperado!</strong>
+				<p>El video que ha seleccionado supera el límite de peso permitido</p>
+				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+			</div>
+		</dialog>
+		');
+	exit();
+}
+
 if ($id == "" || $curso == "" || $descripcion == ""){
 	echo('
 		<dialog id="dialogo">
@@ -124,7 +138,7 @@ if($guardar_video->execute($marcadores)){
 		<div class="bien">
 			<strong>¡VIDEO ALMACENADO!</strong>
 			<p>El video del curso ha sido almacenado exitosamente</p>
-			<button id="cerrar" type="submit" onclick="actualizado()">Aceptar</button>
+			<button id="cerrar" type="submit" onclick="subido()">Aceptar</button>
 		</div>
 	</dialog>
 	');

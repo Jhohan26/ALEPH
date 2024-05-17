@@ -28,11 +28,15 @@ ojo.addEventListener("click", function() {
 });
 function cerrar(){
 	let modal = document.getElementById("dialogo");
+	location.reload();
 	modal.style.display = "none";
 }
 function creacion(){
-	window.location.href='./inicio.php';
+	window.location.href = "./inicio.php";
 }
 function actualizado(){
-	window.location.href='./cuenta.php';
+	window.location.href = "./cuenta.php";
+}
+function subido(){
+	window.location.href = "./cursos.php";
 }

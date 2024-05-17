@@ -31,7 +31,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 				<li><a href="./cursos.php">MIS CURSOS</a></li>
 				<li class="cuenta"><a href="./cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
 				<div class="menu">
-					<h4><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="24"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
+					<h4><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
 					<a href="./logout.php">Cerrar sesión</a>
 				</div>
 			</ul>
@@ -64,7 +64,7 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 					<div class="grupo">
 						<label class="entrada dato">
 							<span class="input">Video</span>
-							<span class="borde">Archivos admitidos (MP4).</span>
+							<span class="borde">Formato MP4 (MAX 500MB).</span>
 							<input id="archivo" type="file" name="video" accept=".mp4" hidden>
 						</label>
 					</div>
@@ -72,7 +72,8 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 						<textarea type="text" name="descripcion_video" class="dato alto" required autocomplete="off" maxlength="512" minlength="10"></textarea>
 						<label class="placeholder">Descripción del video</label>
 					</div>
-						<input id="enviar" class="desactivado" type="submit" value="Subir video" disabled>
+						<input id="enviar" class="desactivado video" type="submit" value="Subir video" disabled> 
+						<i id="icono" class="fa-solid fa-cloud-arrow-up iconodes"></i>
 				</form>
 			</div>
 			<div class="derecha">
@@ -85,16 +86,28 @@ if (!isset($_SESSION["id"]) OR $_SESSION["rol"] == 0){
 	<script type="text/javascript">
 		let archivo = document.getElementById("archivo");
 		let enviar = document.getElementById("enviar");
+		let formulario = document.querySelector(".formulario");
+		let icono = document.getElementById("icono");
 
 		archivo.addEventListener("change", e => {
 			if (e.target.files[0]){
 				enviar.removeAttribute("disabled");
 				enviar.classList.remove("desactivado");
+				icono.classList.remove("iconodes");
 			}
 			else{
 				enviar.classList.add("desactivado");
 				enviar.setAttribute("disabled", "disabled");
+				icono.classList.add("iconodes");
 			}
+		});
+		formulario.addEventListener("submit",() => {
+			enviar.classList.add("desactivado");
+			enviar.setAttribute("disabled", "disabled");
+			icono.className = "";
+			icono.classList.add("fa-solid");
+			icono.classList.add("fa-spinner");
+			icono.classList.add("fa-spin");
 		});
 	</script>
 </body>
