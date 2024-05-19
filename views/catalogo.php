@@ -27,7 +27,7 @@ session_start();
 					<li><a href="./cursos.php">MIS CURSOS</a></li>
 					<li class="cuenta"><a href="./cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
 					<div class="menu">
-						<h4><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
+						<h4><img class="mano" src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
 						<a href="./logout.php">Cerrar sesión</a>
 					</div>
 
@@ -56,10 +56,10 @@ session_start();
 			}
 			$resultado = join("OR", $resultado);
 			if($busqueda == ""){
-				$cursos=$cursos->query("SELECT C.nombre, C.miniatura, U.nombre_usuario, U.foto FROM Cursos AS C INNER JOIN Usuarios AS U ON C.profesor = U.id");
+				$cursos=$cursos->query("SELECT C.id, C.nombre, C.miniatura, U.nombre_usuario, U.foto FROM Cursos AS C INNER JOIN Usuarios AS U ON C.profesor = U.id");
 			}
 			else{
-				$cursos=$cursos->query("SELECT C.nombre, C.miniatura, U.nombre_usuario, U.foto
+				$cursos=$cursos->query("SELECT C.id, C.nombre, C.miniatura, U.nombre_usuario, U.foto
 				FROM Cursos AS C
 				INNER JOIN Usuarios AS U ON C.profesor = U.id
 				INNER JOIN Niveles AS N ON C.niveles_id = N.id
@@ -111,7 +111,7 @@ session_start();
 				$cursos=$cursos->fetchAll();
 				foreach($cursos as $registro){
 					echo('
-						<a class="curso">
+						<a class="curso" href="./curso.php?curso='.$registro["id"].'">
 							<img class="miniatura" src="../miniaturas/'.$registro["miniatura"].'">
 							<h4>'.$registro["nombre"].'</h4>
 							<div class="autor">

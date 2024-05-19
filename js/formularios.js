@@ -28,7 +28,6 @@ ojo.addEventListener("click", function() {
 });
 function cerrar(){
 	let modal = document.getElementById("dialogo");
-	location.reload();
 	modal.style.display = "none";
 }
 function creacion(){
@@ -39,4 +38,7 @@ function actualizado(){
 }
 function subido(){
 	window.location.href = "./cursos.php";
+}
+function reiniciar() {
+	location.reload();
 }

@@ -13,7 +13,7 @@ if(($_FILES['video']['size']/1024)>512000){
 			<div class="mal">
 				<strong>¡Ocurrio un error inesperado!</strong>
 				<p>El video que ha seleccionado supera el límite de peso permitido</p>
-				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
 			</div>
 		</dialog>
 		');
@@ -26,7 +26,7 @@ if ($id == "" || $curso == "" || $descripcion == ""){
 			<div class="mal">
 				<strong>¡Ocurrio un error inesperado!</strong>
 				<p>No has llenado todos los campos que son obligatorios</p>
-				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
 			</div>
 		</dialog>
 		');
@@ -43,7 +43,7 @@ if($check_usuario->rowCount()!=1){
 			<div class="mal">
 				<strong>¡Ocurrio un error inesperado!</strong>
 				<p>No eres un profesor o no tienes permiso</p>
-				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
 			</div>
 		</dialog>
 		');
@@ -58,7 +58,7 @@ if($_FILES['video']['name']=="" || $_FILES['video']['size']==0){
 			<div class="mal">
 				<strong>¡Ocurrio un error inesperado!</strong>
 				<p>No has seleccionado ninguna video</p>
-				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
 			</div>
 		</dialog>
 		');
@@ -76,7 +76,7 @@ if(!file_exists($img_dir)){
 				<div class="mal">
 					<strong>¡Ocurrio un error inesperado!</strong>
 					<p>Error al crear el directorio</p>
-					<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+					<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
 				</div>
 			</dialog>
 			');
@@ -94,7 +94,7 @@ if(mime_content_type($_FILES['video']['tmp_name'])!="video/mp4" && mime_content_
 			<div class="mal">
 				<strong>¡Ocurrio un error inesperado!</strong>
 				<p>El video que ha seleccionado es de un formato que no está permitido</p>
-				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
 			</div>
 		</dialog>
 		');
@@ -115,7 +115,7 @@ if(!move_uploaded_file($_FILES['video']['tmp_name'], $img_dir.$video)){
 			<div class="mal">
 				<strong>¡Ocurrio un error inesperado!</strong>
 				<p>No podemos subir la video al sistema en este momento, por favor intente nuevamente</p>
-				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
 			</div>
 		</dialog>
 		');
@@ -153,7 +153,7 @@ if($guardar_video->execute($marcadores)){
 			<div class="mal">
 				<strong>¡Ocurrio un error inesperado!</strong>
 				<p>No podemos subir el video al sistema en este momento, por favor intente nuevamente</p>
-				<button id="cerrar" type="submit" onclick="cerrar()">Aceptar</button>
+				<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
 			</div>
 		</dialog>
 		');

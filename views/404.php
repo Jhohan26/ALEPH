@@ -1,6 +1,6 @@
 <?php session_start();
 
-if (str_contains($_SERVER["REQUEST_URI"], "views")){
+if (substr_count($_SERVER["REQUEST_URI"], "/") >= 3){
 
 ?>
 
@@ -44,7 +44,7 @@ if (str_contains($_SERVER["REQUEST_URI"], "views")){
 	</header>
 	<main>
 		<section class="landing">
-			<div class="todo">
+			<div class="page404">
 				<h1>404</h1>
 				<h2>PAGE NOT FOUND</h2>
 			</div>
@@ -84,7 +84,7 @@ if (str_contains($_SERVER["REQUEST_URI"], "views")){
 					<li><a href="./views/inicio.php">MIS CURSOS</a></li>
 					<li class="cuenta"><a href="./cuenta.php"><i class="fa-solid fa-user"></i> MI CUENTA</a></li>
 					<div class="menu">
-						<h4><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="24"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
+						<h4><img class="mano" src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"> Hola, <?php echo($_SESSION["usuario"]); ?></h4>
 						<a href="./views/logout.php">Cerrar sesión</a>
 					</div>
 
@@ -100,7 +100,7 @@ if (str_contains($_SERVER["REQUEST_URI"], "views")){
 	</header>
 	<main>
 		<section class="landing">
-			<div class="todo">
+			<div class="page404">
 				<h1>404</h1>
 				<h2>PAGE NOT FOUND</h2>
 			</div>

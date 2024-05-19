@@ -259,7 +259,7 @@ input[type="submit"]:hover{
 	background: var(--blanco);
 	color: var(--morado);
 }
-.fa-eye, .fa-eye-slash, .fa-angle-down{
+.registro .fa-eye, .fa-eye-slash, .fa-angle-down{
 	cursor: pointer;
 	padding: 0.2vw;
 	display: block;
@@ -599,18 +599,18 @@ select option{
 .fa-angle-down{
 	pointer-events: none;
 }
-.landing .todo{
+.landing .page404{
 	width: 80%;
 	margin: auto;
 }
-.landing .todo h1, .landing .todo h2{
+.landing .page404 h1, .landing .page404 h2{
 	text-align: center;
 }
-.landing .todo h1{
+.landing .page404 h1{
 	font-size: 20.2vw;
 	text-shadow: 1vw 0 0 var(--gris-oscuro);
 }
-.landing .todo h2{
+.landing .page404 h2{
 	font-size: 4vw;
 	margin-top: 6vw;
 	font-family: "Nebulax";
@@ -692,6 +692,10 @@ select option{
 	flex-direction: column;
 	gap: 2vw;
 	height: auto;
+}
+.cursos a{
+	display: block;
+	cursor: pointer;
 }
 .cursos .tarjeta{
 	padding: 2vw;
@@ -869,6 +873,89 @@ select option{
 .carrusel .mover_js2{
 	transform: translateX(-80vw);
 }
+.descripcion{
+	padding: 5vw;
+	padding-top: 10vw;
+	gap: 4vw;
+}
+.descripcion .izquierda{
+	flex: 2.2;
+}
+.descripcion .derecha{
+	flex: 1;
+}
+.descripcion .izquierda img{
+	width: 100%;
+	border-radius: 2vw;
+	aspect-ratio: 16/9;
+	object-fit: cover;
+}
+.descripcion .izquierda h2{
+	font-size: 2vw;
+	margin: 0.4vw 0;
+}
+.descripcion .profesor{
+	display: flex;
+	align-items: center;
+}
+.descripcion .profesor img{
+	border-radius: 50%;
+	object-fit: cover;
+	width: 3vw;
+	height: 3vw;
+	aspect-ratio: 1/1;
+	margin-right: 0.6vw;
+}
+.descripcion .profesor p{
+	font-size: 1.2vw;
+}
+.descripcion .profesor button{
+	margin: 0 2vw;
+	padding: 0.4vw 1vw;
+	background: none;
+	border: 0.2vw solid var(--blanco);
+	border-radius: 2vw;
+	font-weight: 500;
+	font-size: 1.3vw;
+}
+.descripcion .profesor button:hover{
+	background: var(--blanco);
+	color: var(--morado);
+}
+.derecha{
+	margin-top: -6.2vw;
+	height: 33.4vw;
+}
+.derecha .texto{
+	height: 33.4vw;
+}
+.derecha .texto{
+	background: var(--transparente);
+	padding-bottom: 1vw;
+	border-radius: 2vw;
+}
+.derecha .texto div{
+	background: var(--transparente);
+	padding: 1vw 3vw;
+	border-radius: 2vw 2vw 0 0;
+}
+.derecha .texto h4, .derecha .texto h5{
+	display: flex;
+	justify-content: space-between;
+}
+.derecha .texto h4{
+	font-size: 1.6vw;
+}
+.derecha .texto h5{
+	font-family: "Inter";
+}
+.derecha .texto i{
+	font-size: 1.8vw;
+}
+.derecha .texto p{
+	margin: 2vw 3vw;
+	font-size: 1.2vw;
+}
 
 
 footer{
@@ -916,7 +1003,6 @@ footer i{
 }
 footer p{
 	font-size: 1vw;
-/*	margin-bottom: 1vw;*/
 }
 .scroll{
 	width: 96vw;
@@ -948,4 +1034,15 @@ footer p{
 	width: max-content;
 	flex-wrap: nowrap;
 	animation: scroll 40s linear infinite;
+}
+::-webkit-scrollbar{
+	width: 0.4vw;
+	height: 0.4vw;
+}
+::-webkit-scrollbar-track{
+	background: var(--azul);
+}
+::-webkit-scrollbar-thumb{
+	background: var(--transparente);
+	border-radius: 0.4vw;
 }

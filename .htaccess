@@ -1,1 +1,3 @@
 ErrorDocument 404 /ALEPH/views/404.php
+ErrorDocument 403 /ALEPH/views/404.php
+Options -Indexes
