@@ -16,7 +16,7 @@ session_start();
 		<a class="logo" href="../index.php">
 			<img src="../logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
-		<a>
+		</a>
 		<?php require_once("../inc/busqueda.php"); ?>
 		<nav>
 			<ul>

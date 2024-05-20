@@ -14,7 +14,7 @@ if (substr_count($_SERVER["REQUEST_URI"], "/") >= 3){
 		<a class="logo" href="../index.php">
 			<img src="../logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
-		<a>
+		</a>
 		<form class="busqueda" method="GET">
 			<input type="text" name="busqueda" placeholder="¿Que deseas aprender?" autocomplete="off">
 			<button class="search"><i class="fa-solid fa-magnifying-glass"></i></button>

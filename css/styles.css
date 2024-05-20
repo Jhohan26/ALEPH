@@ -824,7 +824,7 @@ select option{
 	padding: 0 2vw;
 	overflow: hidden;
 }
-.servicios .carrusel button{
+.servicios .carrusel button, .descripcion .izquierda > button{
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -887,15 +887,39 @@ select option{
 }
 .descripcion .izquierda{
 	flex: 2.2;
+	position: relative;
 }
 .descripcion .derecha{
 	flex: 1;
 }
-.descripcion .izquierda img{
+.descripcion .izquierda img, .descripcion .izquierda video{
 	width: 100%;
 	border-radius: 2vw;
 	aspect-ratio: 16/9;
 	object-fit: cover;
+}
+.descripcion .izquierda > button{
+	width: 4vw;
+	height: 4vw;
+	top: 15vw;
+	backdrop-filter: blur(1vw);
+}
+.descripcion .izquierda > button i{
+	font-size: 2vw;
+}
+.descripcion .izquierda .desactivado{
+	background: #fff1;
+	cursor: not-allowed;
+}
+.descripcion .izquierda .desactivado i{
+	color: var(--gris-oscuro);
+	opacity: 0.4;
+}
+.descripcion .izquierda .este{
+	transform: translateX(-50%);
+}
+.descripcion .izquierda .oeste{
+	transform: translateX(50%);
 }
 .descripcion .izquierda h2{
 	font-size: 2vw;

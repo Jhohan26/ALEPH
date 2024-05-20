@@ -21,7 +21,7 @@ $curso_id = $_GET["curso"];
 		<a class="logo" href="../index.php">
 			<img src="../logos/blanco.svg">
 			<h2 class="texto_logo">ALEPH</h2>
-		<a>
+		</a>
 		<?php require_once("../inc/busqueda.php"); ?>
 		<nav>
 			<ul>
@@ -53,6 +53,7 @@ $curso_id = $_GET["curso"];
 			$curso=$curso->query("SELECT C.id, C.nombre, C.miniatura, C.fecha_publicacion, C.descripcion, U.nombre_usuario, U.foto FROM Cursos AS C INNER JOIN Usuarios AS U ON C.profesor = U.id WHERE C.id=$curso_id");
 			$cantidad = conexion();
 			$estudiante = $_SESSION["id"];
+			$estudiante = isset($estudiante) ? $estudiante : "";
 			$cantidad = $cantidad->query("SELECT COUNT(id) AS cantidad FROM Cursos_inscritos WHERE Cursos_id=$curso_id");
 
 
@@ -61,9 +62,19 @@ $curso_id = $_GET["curso"];
 				$cantidad=$cantidad->fetch();
 				$curso["foto"] = $curso["foto"] == "" ? "user.jpg" : $curso["foto"];
 				$id_curso = $curso["id"];
-				$verificar = conexion();
-				$verificar = $verificar->query("SELECT id FROM Cursos_inscritos WHERE Usuarios_id=$estudiante AND Cursos_id=$id_curso");
-				if ($verificar->rowCount() == 0){
+				if ($estudiante != ""){
+					$verificar = conexion();
+					$verificar = $verificar->query("SELECT id FROM Cursos_inscritos WHERE Usuarios_id=$estudiante AND Cursos_id=$id_curso");
+				}
+				if($estudiante == ""){
+					$boton = '
+					<form method="POST" action="../php/inscribir.php" class="" style="margin:0; padding:0; display:inline;">
+						<input type="hidden" name="inscribir" value="'.$curso["id"].'">
+						<button type="submit" onclick="inicio()">Inscribirse</button>
+					</form>
+					';
+				}
+				else if($verificar->rowCount() == 0){
 					$boton = '
 					<form method="POST" action="../php/inscribir.php" class="formulario" style="margin:0; padding:0; display:inline;">
 						<input type="hidden" name="inscribir" value="'.$curso["id"].'">
@@ -72,7 +83,7 @@ $curso_id = $_GET["curso"];
 					';
 				}
 				else{
-					$boton = '<a href="../php/video.php"><button>Ver contenido</button></a>';
+					$boton = '<a href="./recurso.php?curso='.$curso["id"].'"><button>Ver contenido</button></a>';
 				}
 				echo('
 					<div class="izquierda">

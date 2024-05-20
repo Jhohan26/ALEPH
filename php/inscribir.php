@@ -39,6 +39,15 @@ if ($verificar->rowCount() == 0){
 	];
 	$inscripcion->execute($marcadores);
 }
-header("Location: ../views/curso.php?curso=$curso");
+
+echo('
+<dialog id="dialogo">
+	<div class="bien">
+		<strong>¡CURSO INSCRITO!</strong>
+		<p>Te has inscrito al curso con exito</p>
+		<button id="cerrar" type="submit" onclick="reiniciar()">Aceptar</button>
+	</div>
+</dialog>
+');
 
 ?>
