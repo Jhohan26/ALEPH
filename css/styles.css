@@ -21,7 +21,7 @@
 	--rojo: #fa281b;
 	--verde: #1bfa4c;
 	--x: 45deg;
-	--transparente: #fff6;
+	--transparente: #fff5;
 }
 *{
 	padding: 0;
@@ -48,7 +48,16 @@ header{
 	padding: 1vw 3vw;
 	justify-content: space-between;
 	z-index: 50;
-	backdrop-filter: blur(1vw);
+}
+header::before{
+	position: absolute;
+	content: "";
+	backdrop-filter: blur(0.6vw);
+	width: 100vw;
+	height: 6vw;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }
 .logo{
 	height: 4vw;
@@ -294,9 +303,9 @@ dialog{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #0006;
+	background: #0007;
 	border: none;
-	backdrop-filter: blur(1vw);
+	backdrop-filter: blur(0.6vw);
 	z-index: 100;
 }
 dialog div{
@@ -345,7 +354,6 @@ dialog .mal{
 }
 .tarjeta{
 	background: var(--transparente);
-	backdrop-filter: blur(1vw);
 	border-radius: 1.4vw;
 	border: 0.1vw solid var(--transparente);
 	position: relative;
@@ -433,9 +441,8 @@ h5{
 	width: 15.4vw;
 	height: 13vw;
 	background: var(--transparente);
+	backdrop-filter: blur(0.5vw);
 	border-radius: 0 0 0 1vw;
-}
-.menu{
 	font-size: 1.2vw;
 }
 .menu a{

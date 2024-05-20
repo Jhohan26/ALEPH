@@ -240,7 +240,7 @@ if($guardar_curso->rowCount()==1){
 		<div class="bien">
 			<strong>¡CURSO REGISTRADO!</strong>
 			<p>El curso se ha creado con exito</p>
-			<button id="cerrar" type="submit" onclick="creacion()">Aceptar</button>
+			<button id="cerrar" type="submit" onclick="subido()">Aceptar</button>
 		</div>
 	</dialog>
 	');

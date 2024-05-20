@@ -57,7 +57,6 @@ if (!isset($_SESSION["id"])){
 										<p>'.$registro["nombre_usuario"].'</p>
 									</div>
 									<div class="botones">
-										<a href="./curso.php?curso='.$registro["id"].'"><button class="ir"><i class="fa-solid fa-play"></i> Ir al curso</button></a>
 										<a href="./videos.php"><button class="ir"><i class="fa-solid fa-play"></i> Añadir video</button></a>
 										<a href=""><button class="eliminar"><i class="fa-solid fa-trash"></i> Eliminar</button></a>
 									</div>

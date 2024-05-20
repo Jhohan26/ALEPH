@@ -110,6 +110,7 @@ session_start();
 				<?php
 				$cursos=$cursos->fetchAll();
 				foreach($cursos as $registro){
+					$registro["foto"] = $registro["foto"] == "" ? "user.jpg" : $registro["foto"];
 					echo('
 						<a class="curso" href="./curso.php?curso='.$registro["id"].'">
 							<img class="miniatura" src="../miniaturas/'.$registro["miniatura"].'">

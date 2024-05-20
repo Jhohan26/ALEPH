@@ -107,7 +107,11 @@ $nombre_curso=$nombre_curso->fetch();
 
 $img_nombre=renombrar_fotos($nombre_curso["nombre"]);
 
-$video=$img_nombre.".mp4";
+$numero = conexion();
+$numero = $numero->query("SELECT IFNULL(MAX(id)+1,1) AS id FROM Videos WHERE Cursos_id=$curso");
+$numero = $numero->fetch();
+echo($numero["id"]);
+$video=$img_nombre."_".$numero["id"].".mp4";
 
 if(!move_uploaded_file($_FILES['video']['tmp_name'], $img_dir.$video)){
 	echo('
