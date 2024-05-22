@@ -68,10 +68,8 @@ $curso_id = $_GET["curso"];
 				}
 				if($estudiante == ""){
 					$boton = '
-					<form method="POST" action="../php/inscribir.php" class="" style="margin:0; padding:0; display:inline;">
 						<input type="hidden" name="inscribir" value="'.$curso["id"].'">
-						<button type="submit" onclick="inicio()">Inscribirse</button>
-					</form>
+						<button type="submit" onclick="creacion()">Inscribirse</button>
 					';
 				}
 				else if($verificar->rowCount() == 0){
@@ -99,7 +97,7 @@ $curso_id = $_GET["curso"];
 						<div class="texto">
 							<div>
 								<h4>'.$cantidad["cantidad"].' estudiantes <i class="fa-solid fa-users"></i></i></h4>
-								<h5>'.$curso["fecha_publicacion"].' <i class="fa-regular fa-calendar-days"></i></h4>
+								<h5>'.$curso["fecha_publicacion"].' <i class="fa-regular fa-calendar-days"></i></h5>
 							</div>
 							<p>'.$curso["descripcion"].'</p>
 						</div>

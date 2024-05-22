@@ -12,6 +12,8 @@ if (!isset($_SESSION["id"])){
 		header("Location: ../index.php");
 	}
 }
+$usuario = $_SESSION["id"];
+
 
 ?>
 
@@ -44,8 +46,7 @@ if (!isset($_SESSION["id"])){
 			<?php
 			$cursos=conexion();
 			if ($_SESSION["rol"] == 1){
-				$profesor = $_SESSION["id"];
-				$cursos=$cursos->query("SELECT C.id, C.nombre, C.miniatura, U.nombre_usuario FROM Cursos AS C INNER JOIN Usuarios AS U ON C.profesor = U.id WHERE C.profesor=$profesor");
+				$cursos=$cursos->query("SELECT C.id, C.nombre, C.miniatura, U.nombre_usuario FROM Cursos AS C INNER JOIN Usuarios AS U ON C.profesor = U.id WHERE C.profesor=$usuario");
 				if($cursos->rowCount()>0){
 					$cursos=$cursos->fetchAll();
 					foreach($cursos as $registro){
@@ -69,29 +70,28 @@ if (!isset($_SESSION["id"])){
 				}
 				echo('<a href="./crear.php"><button><i class="fa-solid fa-plus"></i> Crear curso</button></a>');
 			}
-			else{
-				$cursos=$cursos->query("SELECT C.id, C.nombre, C.miniatura, U.nombre_usuario FROM Cursos AS C INNER JOIN Usuarios AS U ON C.profesor = U.id WHERE C.profesor=$profesor");
-				if($cursos->rowCount()>0){
-					$cursos=$cursos->fetchAll();
-					foreach($cursos as $registro){
-						echo('
-								<div class="tarjeta">
-									<img src="../miniaturas/'.$registro["miniatura"].'">
-									<div class="info">
-										<h2>'.$registro["nombre"].'</h2>
-										<p>'.$registro["nombre_usuario"].'</p>
-									</div>
-									<div class="botones">
-										<a href="./curso.php?curso='.$registro["id"].'"><button class="ir"><i class="fa-solid fa-play"></i> Ir al curso</button></a>
-										<a href=""><button class="eliminar"><i class="fa-solid fa-trash"></i> Eliminar</button></a>
-									</div>
+			$cursos=conexion();
+			$cursos=$cursos->query("SELECT C.id, C.nombre, C.miniatura, U.nombre_usuario FROM Cursos AS C INNER JOIN Cursos_inscritos AS I ON C.id=I.Cursos_id INNER JOIN Usuarios AS U ON C.profesor=U.id WHERE I.Usuarios_id=$usuario");
+			if($cursos->rowCount()>0){
+				$cursos=$cursos->fetchAll();
+				foreach($cursos as $registro){
+					echo('
+							<div class="tarjeta">
+								<img src="../miniaturas/'.$registro["miniatura"].'">
+								<div class="info">
+									<h2>'.$registro["nombre"].'</h2>
+									<p>'.$registro["nombre_usuario"].'</p>
 								</div>
-							');
-					}
+								<div class="botones">
+									<a href="./curso.php?curso='.$registro["id"].'"><button class="ir"><i class="fa-solid fa-play"></i> Ir al curso</button></a>
+									<a href=""><button class="eliminar"><i class="fa-solid fa-trash"></i> Eliminar</button></a>
+								</div>
+							</div>
+						');
 				}
-				else{
-					echo("<h2>No tienes ningun curso creado :(</h2>");
-				}
+			}
+			else{
+				echo("<h2>No te has inscrito a ningun curso :(</h2>");
 			}
 			$cursos=null;
 			?>

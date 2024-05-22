@@ -514,7 +514,7 @@ h5{
 	background: none;
 	color: var(--blanco);
 }
-.formulario .desactivado{
+.formulario .desactivado, .flechas .desactivado{
 	opacity: 0.4;
 	cursor: not-allowed;
 }
@@ -824,7 +824,7 @@ select option{
 	padding: 0 2vw;
 	overflow: hidden;
 }
-.servicios .carrusel button, .descripcion .izquierda > button{
+.servicios .carrusel button, .descripcion .izquierda .flechas > button{
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -887,6 +887,8 @@ select option{
 }
 .descripcion .izquierda{
 	flex: 2.2;
+}
+.descripcion .izquierda .flechas{
 	position: relative;
 }
 .descripcion .derecha{
@@ -898,10 +900,10 @@ select option{
 	aspect-ratio: 16/9;
 	object-fit: cover;
 }
-.descripcion .izquierda > button{
+.descripcion .izquierda .flechas > button{
+	top: 15vw;
 	width: 4vw;
 	height: 4vw;
-	top: 15vw;
 	backdrop-filter: blur(1vw);
 }
 .descripcion .izquierda > button i{
@@ -910,10 +912,6 @@ select option{
 .descripcion .izquierda .desactivado{
 	background: #fff1;
 	cursor: not-allowed;
-}
-.descripcion .izquierda .desactivado i{
-	color: var(--gris-oscuro);
-	opacity: 0.4;
 }
 .descripcion .izquierda .este{
 	transform: translateX(-50%);
@@ -984,7 +982,7 @@ select option{
 	font-size: 1.8vw;
 }
 .derecha .texto p{
-	margin: 2vw 3vw;
+	margin: 1.4vw 2.4vw;
 	font-size: 1.2vw;
 }
 
