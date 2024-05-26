@@ -77,7 +77,7 @@ if ($verificar_inscripcion->rowCount() == 0){
 						$boton = "";
 					}
 					$video = conexion();
-					$video = $video->query("SELECT V.nombre, V.descripcion, C.nombre AS curso, C.fecha_publicacion, U.foto, U.nombre_usuario FROM Videos AS V INNER JOIN Cursos AS C ON V.Cursos_id = C.id INNER JOIN Usuarios AS U ON C.profesor = U.id WHERE V.id = $video_actual");
+					$video = $video->query("SELECT V.nombre, V.descripcion, V.orden, C.nombre AS curso, C.fecha_publicacion, U.foto, U.nombre_usuario FROM Videos AS V INNER JOIN Cursos AS C ON V.Cursos_id = C.id INNER JOIN Usuarios AS U ON C.profesor = U.id WHERE V.id = $video_actual");
 					if ($video->rowCount() == 1){
 						$video = $video->fetch();
 						echo('
@@ -91,7 +91,7 @@ if ($verificar_inscripcion->rowCount() == 0){
 									<video controls autoplay>
 										<source src="../videos/'.$video["nombre"].'" type="video/mp4">
 									</video>
-									<h2 class="titulo">'.$video_actual.'. '.$video["curso"].'</h2>
+									<h2 class="titulo">'.$video["orden"].'. '.$video["curso"].'</h2>
 									<div class="profesor">
 										<img src="../photos/'.$video["foto"].'">
 										<p>'.$video["nombre_usuario"].'</p>
@@ -132,12 +132,12 @@ if ($verificar_inscripcion->rowCount() == 0){
 
 
 				video.addEventListener('timeupdate', function(){
-					if (video.currentTime > ultimo_tiempo + 0.6){
-						video.currentTime = ultimo_tiempo;
-					}
-					else{
-						ultimo_tiempo = video.currentTime;
-					}
+					// if (video.currentTime > ultimo_tiempo + 0.6){
+					// 	video.currentTime = ultimo_tiempo;
+					// }
+					// else{
+					// 	ultimo_tiempo = video.currentTime;
+					// }
 
 					if (video.currentTime > video.duration * 0.95){
 						boton.removeAttribute("disabled");
@@ -149,11 +149,11 @@ if ($verificar_inscripcion->rowCount() == 0){
 					}
 				});
 
-				video.addEventListener('seeking', function(){
-					if (video.currentTime > ultimo_tiempo){
-						video.currentTime = ultimo_tiempo;
-					}
-				});
+				// video.addEventListener('seeking', function(){
+				// 	if (video.currentTime > ultimo_tiempo){
+				// 		video.currentTime = ultimo_tiempo;
+				// 	}
+				// });
 			});
 		</script>
 	</main>

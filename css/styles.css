@@ -408,7 +408,7 @@ h5{
 	gap: 0.4vw;
 }
 .derecha .tarjeta{
-	height: 17vw;
+	min-height: 17vw;
 	width: 54vw;
 	margin: 2vw 0;
 	display: flex;
@@ -985,7 +985,53 @@ select option{
 	margin: 1.4vw 2.4vw;
 	font-size: 1.2vw;
 }
-
+.cuenta .derecha .logros{
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	padding: 2vw 3vw 2vw 5vw;
+	place-items: center;
+	row-gap: 2vw;
+}
+.cuenta .derecha .logros img{
+	display: block;
+	width: 5vw;
+	height: 5vw;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+	border-radius: 50%;
+}
+.cuenta .derecha .logros img:hover{
+	transform: scale(1.2);
+}
+.cuenta .derecha .logros h4{
+	grid-column: 1/7;
+}
+.cuenta .derecha .progreso{
+	gap: 1.2vw;
+	padding: 2vw 2vw 2vw 5vw;
+}
+.cuenta .derecha .progreso .barra{
+	width: 32vw;
+	height: 2vw;
+	border-radius: 1vw;
+	border: 0.1vw solid var(--blanco);
+	overflow: hidden;
+	margin: 0 0.8vw;
+}
+.cuenta .derecha .progreso h5{
+	font-family: "Inter";
+	font-weight: normal;
+	color: var(--blanco);
+	width: 8.2vw;
+}
+.cuenta .derecha .progreso .barra .completado{
+	height: 2vw;
+	background: var(--blanco);
+}
+.cuenta .derecha .pro_curso{
+	display: flex;
+	align-items: center;
+}
 
 footer{
 	display: flex;

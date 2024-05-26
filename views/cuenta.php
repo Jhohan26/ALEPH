@@ -2,6 +2,8 @@
 
 session_start();
 
+require_once("../php/main.php");
+
 if (!isset($_SESSION["id"])){
 	if (headers_sent()){
 		echo ("<script>window.location.href='../index.php'</script>");
@@ -10,6 +12,8 @@ if (!isset($_SESSION["id"])){
 		header("Location: ../index.php");
 	}
 }
+
+$estudiante = $_SESSION["id"];
 
 ?>
 
@@ -73,13 +77,62 @@ if (!isset($_SESSION["id"])){
 				</div>
 			</div>
 			<div class="derecha">
-				<div class="tarjeta">
+				<div class="tarjeta logros">
 					<h3>LOGROS</h3>
-					<h4>Por el momento no has terminado ninguno curso</h4>
+					<?php
+						$logros = conexion();
+						$logros = $logros->query("SELECT C.id, C.insignia FROM Cursos_realizados AS R INNER JOIN Cursos AS C ON R.Cursos_id=C.id WHERE R.Usuarios_id=$estudiante");
+						if ($logros->rowCount() > 0){
+							$logros = $logros->fetchAll();
+							foreach ($logros as $curso){
+								echo('<a href="./curso.php?curso='.$curso["id"].'"><img src="../insignias/'.$curso["insignia"].'"></a>');
+							}
+						}
+						else{
+							echo('<h4>Por el momento no has terminado ninguno curso</h4>');
+						}
+					?>
 				</div>
-				<div class="tarjeta">
+				<div class="tarjeta progreso">
 					<h3>PROGRESO</h3>
-					<h4>No estas realizando ningun curso en el momento</h4>
+					<?php
+
+					$cursos = conexion();
+						$cursos = $cursos->query("SELECT I.Cursos_id, C.nombre FROM Cursos_inscritos AS I INNER JOIN Cursos AS C ON I.Cursos_id=C.id WHERE Usuarios_id=$estudiante");
+					if ($cursos->rowCount() > 0){
+						$cursos = $cursos->fetchAll();
+						foreach ($cursos as $curso){
+							$nombre = $curso["nombre"];
+							$id_curso = $curso["Cursos_id"];
+
+							$total = conexion();
+							$total = $total->query("SELECT COUNT(id) AS total FROM Videos WHERE Cursos_id=$id_curso");
+							$total = $total->fetch()["total"];
+
+							$realizados = conexion();
+							$realizados = $realizados->query("SELECT COUNT(id) AS cantidad FROM Videos_vistos WHERE Cursos_id=$id_curso AND Usuarios_id=$estudiante");
+							$realizados = $realizados->fetch()["cantidad"];
+
+							$porcentaje = (100/$total) * $realizados;
+							$porcentaje = round($porcentaje);
+
+							echo('
+								<div class="pro_curso">
+									<h5>'.$nombre.'</h5>
+									<div class="barra">
+										<div class="completado" style="width: '.$porcentaje.'%;"></div>
+									</div>
+									<p>'.$porcentaje.'%</p>
+								</div>
+								');
+						}
+
+					}
+					else{
+						echo('<h4>No estas realizando ningun curso en el momento</h4');
+					}
+
+					?>
 				</div>
 			</div>
 		</section>

@@ -108,10 +108,10 @@ $nombre_curso=$nombre_curso->fetch();
 $img_nombre=renombrar_fotos($nombre_curso["nombre"]);
 
 $numero = conexion();
-$numero = $numero->query("SELECT IFNULL(MAX(id)+1,1) AS id FROM Videos WHERE Cursos_id=$curso");
+$numero = $numero->query("SELECT IFNULL(MAX(orden)+1,1) AS orden FROM Videos WHERE Cursos_id=$curso");
 $numero = $numero->fetch();
-echo($numero["id"]);
-$video=$img_nombre."_".$numero["id"].".mp4";
+echo($numero["orden"]);
+$video=$img_nombre."_".$numero["orden"].".mp4";
 
 if(!move_uploaded_file($_FILES['video']['tmp_name'], $img_dir.$video)){
 	echo('
@@ -128,11 +128,12 @@ if(!move_uploaded_file($_FILES['video']['tmp_name'], $img_dir.$video)){
 
 
 $guardar_video=conexion();
-$guardar_video=$guardar_video->prepare("INSERT INTO Videos VALUES(NULL,:video,:descripcion,:curso)");
+$guardar_video=$guardar_video->prepare("INSERT INTO Videos VALUES(NULL,:video,:descripcion,:orden,:curso)");
 
 $marcadores=[
 	":video"=>$video,
 	":descripcion"=>$descripcion,
+	":orden" => $numero["orden"],
 	":curso"=>$curso
 ];
 
