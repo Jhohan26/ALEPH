@@ -16,6 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `Calificaciones`
+--
+
+DROP TABLE IF EXISTS `Calificaciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Calificaciones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Usuarios_id` int(11) NOT NULL,
+  `Cursos_id` int(11) NOT NULL,
+  `calificacion` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `fk_Calificaciones_Usuarios1_idx` (`Usuarios_id`),
+  KEY `fk_Calificaciones_Cursos1_idx` (`Cursos_id`),
+  CONSTRAINT `fk_Calificaciones_Cursos1` FOREIGN KEY (`Cursos_id`) REFERENCES `Cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Calificaciones_Usuarios1` FOREIGN KEY (`Usuarios_id`) REFERENCES `Usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Calificaciones`
+--
+
+LOCK TABLES `Calificaciones` WRITE;
+/*!40000 ALTER TABLE `Calificaciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Calificaciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Categorias`
 --
 
@@ -27,7 +57,7 @@ CREATE TABLE `Categorias` (
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +66,17 @@ CREATE TABLE `Categorias` (
 
 LOCK TABLES `Categorias` WRITE;
 /*!40000 ALTER TABLE `Categorias` DISABLE KEYS */;
+INSERT INTO `Categorias` VALUES
+(1,'Programación'),
+(2,'Matemáticas'),
+(3,'Diseño Gráfico'),
+(4,'Marketing Digital'),
+(5,'Idiomas'),
+(6,'Fotografía'),
+(7,'Finanzas Personales'),
+(8,'Cocina'),
+(9,'Desarrollo Web'),
+(10,'Marketing de Contenidos');
 /*!40000 ALTER TABLE `Categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,8 +90,9 @@ DROP TABLE IF EXISTS `Cursos`;
 CREATE TABLE `Cursos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(45) NOT NULL,
+  `descripcion` varchar(512) NOT NULL,
   `miniatura` varchar(128) NOT NULL,
+  `insignia` varchar(128) NOT NULL,
   `fecha_publicacion` date NOT NULL,
   `Niveles_id` int(11) NOT NULL,
   `Categorias_id` int(11) NOT NULL,
@@ -73,6 +115,35 @@ CREATE TABLE `Cursos` (
 LOCK TABLES `Cursos` WRITE;
 /*!40000 ALTER TABLE `Cursos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Cursos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Cursos_inscritos`
+--
+
+DROP TABLE IF EXISTS `Cursos_inscritos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Cursos_inscritos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Usuarios_id` int(11) NOT NULL,
+  `Cursos_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `fk_Cursos_inscritos_Usuarios1_idx` (`Usuarios_id`),
+  KEY `fk_Cursos_inscritos_Cursos1_idx` (`Cursos_id`),
+  CONSTRAINT `fk_Cursos_inscritos_Cursos1` FOREIGN KEY (`Cursos_id`) REFERENCES `Cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Cursos_inscritos_Usuarios1` FOREIGN KEY (`Usuarios_id`) REFERENCES `Usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Cursos_inscritos`
+--
+
+LOCK TABLES `Cursos_inscritos` WRITE;
+/*!40000 ALTER TABLE `Cursos_inscritos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Cursos_inscritos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -116,7 +187,7 @@ CREATE TABLE `Niveles` (
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,6 +196,10 @@ CREATE TABLE `Niveles` (
 
 LOCK TABLES `Niveles` WRITE;
 /*!40000 ALTER TABLE `Niveles` DISABLE KEYS */;
+INSERT INTO `Niveles` VALUES
+(1,'Fácil'),
+(2,'Intermedio'),
+(3,'Difícil');
 /*!40000 ALTER TABLE `Niveles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,10 +220,10 @@ CREATE TABLE `Usuarios` (
   `correo` varchar(45) NOT NULL,
   `contrasena` char(64) NOT NULL,
   `foto` varchar(128) DEFAULT NULL,
-  `Roles_id` int(1) NOT NULL,
+  `rol` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,10 +232,6 @@ CREATE TABLE `Usuarios` (
 
 LOCK TABLES `Usuarios` WRITE;
 /*!40000 ALTER TABLE `Usuarios` DISABLE KEYS */;
-INSERT INTO `Usuarios` VALUES
-(1,'Jhohan','Esteban','Reyes','García','Jhohan26','jhohan@gmail.com','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f','',1),
-(2,'Jhony','Santiago','Reyes','García','Jhony','jhonysantiagoreyesgarcia@gmail.com','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f','',1),
-(3,'Juan','Esteban','Serna','Saenz','Juanzesaenz24','juan@gmail.com','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f','',1);
 /*!40000 ALTER TABLE `Usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,11 +243,13 @@ DROP TABLE IF EXISTS `Videos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Videos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(45) DEFAULT NULL,
+  `descripcion` varchar(512) DEFAULT NULL,
+  `orden` int(11) NOT NULL,
   `Cursos_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_Videos_Cursos1_idx` (`Cursos_id`),
   CONSTRAINT `fk_Videos_Cursos1` FOREIGN KEY (`Cursos_id`) REFERENCES `Cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -232,4 +305,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-09  9:23:17
+-- Dump completed on 2024-05-26 14:47:07
