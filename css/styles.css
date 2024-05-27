@@ -802,6 +802,7 @@ select option{
 	justify-content: center;
 	padding-left: 8vw;
 	gap: 0.4vw;
+	height: auto;
 }
 .sobre .derecha h2, .servicios .izquierda h2{
 	font-family: "Nebulax";
